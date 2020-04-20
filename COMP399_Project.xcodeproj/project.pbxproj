@@ -15,6 +15,7 @@
 		A9E1D266244E2F1A009B5865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9E1D264244E2F1A009B5865 /* LaunchScreen.storyboard */; };
 		A9E1D26E244E3512009B5865 /* GameTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E1D26D244E3512009B5865 /* GameTabBarViewController.swift */; };
 		A9E1D271244E4FDA009B5865 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E1D270244E4FDA009B5865 /* Item.swift */; };
+		A9E1D273244E6B8E009B5865 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E1D272244E6B8E009B5865 /* Entity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A9E1D267244E2F1A009B5865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9E1D26D244E3512009B5865 /* GameTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTabBarViewController.swift; sourceTree = "<group>"; };
 		A9E1D270244E4FDA009B5865 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A9E1D272244E6B8E009B5865 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				A9E1D25D244E2F19009B5865 /* ViewController.swift */,
 				A9E1D25F244E2F19009B5865 /* Main.storyboard */,
 				A9E1D26D244E3512009B5865 /* GameTabBarViewController.swift */,
+				A9E1D272244E6B8E009B5865 /* Entity.swift */,
 				A9E1D262244E2F1A009B5865 /* Assets.xcassets */,
 				A9E1D264244E2F1A009B5865 /* LaunchScreen.storyboard */,
 				A9E1D267244E2F1A009B5865 /* Info.plist */,
@@ -154,6 +157,7 @@
 			files = (
 				A9E1D271244E4FDA009B5865 /* Item.swift in Sources */,
 				A9E1D25E244E2F19009B5865 /* ViewController.swift in Sources */,
+				A9E1D273244E6B8E009B5865 /* Entity.swift in Sources */,
 				A9E1D25A244E2F18009B5865 /* AppDelegate.swift in Sources */,
 				A9E1D26E244E3512009B5865 /* GameTabBarViewController.swift in Sources */,
 				A9E1D25C244E2F18009B5865 /* SceneDelegate.swift in Sources */,
