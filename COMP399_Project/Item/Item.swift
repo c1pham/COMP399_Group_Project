@@ -20,7 +20,11 @@ class Item {
         self.description = description
     }
     
-    func use() {
-       
+    func use(player: Any) {
+       print("\(name) is used")
+    }
+    
+    func display() -> String {
+        return "Name: \(name), Price: \(price), Description: \(description)"
     }
 }
