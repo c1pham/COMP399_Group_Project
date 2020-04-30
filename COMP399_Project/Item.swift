@@ -12,9 +12,13 @@ class Item {
     var name: String
     var price: Int
     var description: String
+    static var itemID: Int = 1000
+    var ID : Int
     
     
     init( name: String, price: Int, description: String) {
+        self.ID = Item.itemID
+        Item.itemID = self.ID + 1
         self.name = name
         self.price = price
         self.description = description

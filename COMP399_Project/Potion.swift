@@ -24,7 +24,7 @@ class Potion : Item {
         print("Potion is used")
     }
     
-    override func display() {
+    override func display() -> String {
         return super.display() + ", Stat: \(self.stat), Amount: \(self.amount)"
     }
 }

@@ -10,11 +10,9 @@ import Foundation
 
 class Equipment : Item {
     var grade : String
-    var statChanges : [String: Int]
     
-    override init(name: String, price: Int, description: String, rarity: String, statChanges : [String: Int]) {
+    init(name: String, price: Int, description: String, rarity: String) {
         self.grade = rarity
-        self.statChanges = statChanges
         super.init(name: name, price: price, description: description)
     }
     
@@ -23,32 +21,63 @@ class Equipment : Item {
         print("Equipment is equipped")
     }
     
-    override func display() {
+    override func display() -> String {
         return super.display() + ", Grade: \(self.grade)"
     }
 }
 
 class Helmet : Equipment {
-    override init(name: String, price: Int, description: String, rarity: String, statChanges : [String: Int]) {
-        super.init(name: name, price: price, description: description, rarity: rarity, statChanges: statChanges)
+    var health : Int
+    var defense : Int
+    init(name: String, price: Int, description: String, rarity: String, health: Int, defense: Int) {
+        self.defense = defense
+        self.health = health
+        super.init(name: name, price: price, description: description, rarity: rarity)
     }
 }
 
 class ChestPiece : Equipment {
-    override init(name: String, price: Int, description: String, rarity: String, statChanges : [String: Int]) {
-        super.init(name: name, price: price, description: description, rarity: rarity, statChanges: statChanges)
+    var health : Int
+    var defense : Int
+    init(name: String, price: Int, description: String, rarity: String, health: Int, defense: Int) {
+        self.defense = defense
+        self.health = health
+
+        super.init(name: name, price: price, description: description, rarity: rarity)
     }
 }
 
 class Boot : Equipment {
-    override init(name: String, price: Int, description: String, rarity: String, statChanges : [String: Int]) {
-        super.init(name: name, price: price, description: description, rarity: rarity, statChanges: statChanges)
+    var health : Int
+    var defense : Int
+    init(name: String, price: Int, description: String, rarity: String, health: Int, defense: Int) {
+        self.defense = defense
+        self.health = health
+
+        super.init(name: name, price: price, description: description, rarity: rarity)
     }
 }
 
 class Gloves : Equipment {
-    override init(name: String, price: Int, description: String, rarity: String, statChanges : [String: Int]) {
-        super.init(name: name, price: price, description: description, rarity: rarity, statChanges: statChanges)
+    var health : Int
+    var defense : Int
+    var luck : Int
+    init(name: String, price: Int, description: String, rarity: String, health: Int, defense: Int, luck: Int) {
+        self.defense = defense
+        self.health = health
+        self.luck = luck
+        super.init(name: name, price: price, description: description, rarity: rarity)
+    }
+}
+
+class Sword : Equipment {
+    var attack : Int
+    var luck : Int
+    
+    init(name: String, price: Int, description: String, rarity: String, attack: Int, luck: Int) {
+        self.attack = attack
+        self.luck = luck
+        super.init(name: name, price: price, description: description, rarity: rarity)
     }
 }
 
