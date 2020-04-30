@@ -47,22 +47,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A98EF82A2459F3DD0065A6D4 /* Potion */ = {
-			isa = PBXGroup;
-			children = (
-				A98EF8262459ED270065A6D4 /* Potion.swift */,
-			);
-			path = Potion;
-			sourceTree = "<group>";
-		};
-		A98EF82B2459F3F90065A6D4 /* Equipment */ = {
-			isa = PBXGroup;
-			children = (
-				A98EF8282459F2B00065A6D4 /* Equipment.swift */,
-			);
-			path = Equipment;
-			sourceTree = "<group>";
-		};
 		A9E1D24D244E2F18009B5865 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +66,9 @@
 		A9E1D258244E2F18009B5865 /* COMP399_Project */ = {
 			isa = PBXGroup;
 			children = (
-				A9E1D26F244E4FC7009B5865 /* Item */,
+				A98EF8282459F2B00065A6D4 /* Equipment.swift */,
+				A98EF8262459ED270065A6D4 /* Potion.swift */,
+				A9E1D270244E4FDA009B5865 /* Item.swift */,
 				A9E1D259244E2F18009B5865 /* AppDelegate.swift */,
 				A9E1D25B244E2F18009B5865 /* SceneDelegate.swift */,
 				A9E1D25D244E2F19009B5865 /* ViewController.swift */,
@@ -94,16 +80,6 @@
 				A9E1D267244E2F1A009B5865 /* Info.plist */,
 			);
 			path = COMP399_Project;
-			sourceTree = "<group>";
-		};
-		A9E1D26F244E4FC7009B5865 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				A9E1D270244E4FDA009B5865 /* Item.swift */,
-				A98EF82A2459F3DD0065A6D4 /* Potion */,
-				A98EF82B2459F3F90065A6D4 /* Equipment */,
-			);
-			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
