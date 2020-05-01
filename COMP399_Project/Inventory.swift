@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class Inventory {
     var items : [Item]
     var count : Int
@@ -51,8 +49,8 @@ class Inventory {
     func remove(item: Item) -> Item? {
         for bagItem in self.items {
             if (bagItem.ID == item.ID) {
-                self.remove(ID: bagItem.ID)
-                return bagItem
+                let item = self.remove(ID: bagItem.ID)
+                return item
             }
         }
         return nil

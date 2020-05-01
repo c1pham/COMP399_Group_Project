@@ -10,6 +10,10 @@ import UIKit
 
 class GameTabBarViewController: UITabBarController {
     
+    var bag = Inventory()
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

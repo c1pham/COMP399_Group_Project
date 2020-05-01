@@ -47,18 +47,18 @@ class Item {
     }
     
     func decreaseStats(type: String, amount: Int, entity: Player) {
-           for _ in 0 ... amount {
-               if (type == "health") {
-                   entity.decreaseHealth()
-               } else if (type == "attack") {
-                   entity.decreaseAttack()
-               } else if (type == "defense") {
-                   entity.decreaseDefense()
-               } else if (type == "lucky") {
-                   entity.decreaseLuck()
-               }
-           }
-       }
+        for _ in 0 ... amount {
+            if (type == "health") {
+                entity.decreaseHealth()
+            } else if (type == "attack") {
+                entity.decreaseAttack()
+            } else if (type == "defense") {
+                entity.decreaseDefense()
+            } else if (type == "lucky") {
+                entity.decreaseLuck()
+            }
+        }
+    }
 }
 
 
