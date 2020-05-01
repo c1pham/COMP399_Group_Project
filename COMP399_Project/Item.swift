@@ -24,11 +24,42 @@ class Item {
         self.description = description
     }
     
-    func use(player: Any) {
+    func use(player: Character) {
        print("\(name) is used")
     }
     
     func display() -> String {
         return "Name: \(name), Price: \(price), Description: \(description)"
     }
+    
+    func increaseStats(type: String, amount: Int, entity: Player) {
+        for _ in 0 ... amount {
+            if (type == "health") {
+                entity.increaseHealth()
+            } else if (type == "attack") {
+                entity.increaseAttack()
+            } else if (type == "defense") {
+                entity.increaseDefense()
+            } else if (type == "lucky") {
+                entity.increaseLuck()
+            }
+        }
+    }
+    
+    func decreaseStats(type: String, amount: Int, entity: Player) {
+           for _ in 0 ... amount {
+               if (type == "health") {
+                   entity.decreaseHealth()
+               } else if (type == "attack") {
+                   entity.decreaseAttack()
+               } else if (type == "defense") {
+                   entity.decreaseDefense()
+               } else if (type == "lucky") {
+                   entity.decreaseLuck()
+               }
+           }
+       }
 }
+
+
+

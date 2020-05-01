@@ -10,6 +10,8 @@
 import Foundation
 
 
+
+
 class Character {
     
     var name: String            //Name of Character
@@ -78,7 +80,6 @@ class Character {
             curHp = maxHp
         }
     }
-    
 }
 
 //Player has different circumstances than an enemy
@@ -125,6 +126,28 @@ class Player: Character{
     
     func increaseLuck(){
         stats[3] += 1
+    }
+    
+    
+    //decrease the various stats
+    func decreaseHealth(){
+        stats[0] -= 1
+        
+        //When you increase the health stat, make sure to update the max Hp to new value
+        maxHp = stats[0] * 10
+        curHp = maxHp
+    }
+    
+    func decreaseAttack(){
+        stats[1] -= 1
+    }
+
+    func decreaseDefense(){
+        stats[2] -= 1
+    }
+    
+    func decreaseLuck(){
+        stats[3] -= 1
     }
     
     //Change attack by including the weapon
@@ -223,8 +246,6 @@ func spawnEnemy(level: Int) -> Character{
         let statGained = Int(arc4random_uniform(UInt32(level)))
         enemyStats[i] += statGained
     }
-    
-    
     //Enemy is created
     return Character(name: enemyName, stats: enemyStats, sprite: enemySprite, level: level)
 }

@@ -10,19 +10,21 @@ import Foundation
 
 class Equipment : Item {
     var grade : String
+    var equipped: Bool
     
     init(name: String, price: Int, description: String, rarity: String) {
         self.grade = rarity
+        self.equipped = false
         super.init(name: name, price: price, description: description)
     }
     
-    override func use(player: Any) {
+    override func use(player: Character) {
         // can make generic method that goes through all stat changes and applies them
-        print("Equipment is equipped")
+        self.equipped = true
     }
     
     override func display() -> String {
-        return super.display() + ", Grade: \(self.grade)"
+        return super.display() + ", Grade: \(self.grade), Equipped: \(self.equipped)"
     }
 }
 
@@ -34,6 +36,18 @@ class Helmet : Equipment {
         self.health = health
         super.init(name: name, price: price, description: description, rarity: rarity)
     }
+    
+    override func use(player: Character) {
+        if (equipped) {
+            self.equipped = false
+            super.increaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.increaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+        } else {
+            self.equipped = true
+            super.decreaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.decreaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+        }
+    }
 }
 
 class ChestPiece : Equipment {
@@ -42,8 +56,19 @@ class ChestPiece : Equipment {
     init(name: String, price: Int, description: String, rarity: String, health: Int, defense: Int) {
         self.defense = defense
         self.health = health
-
         super.init(name: name, price: price, description: description, rarity: rarity)
+    }
+    
+    override func use(player: Character) {
+        if (equipped) {
+            self.equipped = false
+            super.increaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.increaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+        } else {
+            self.equipped = true
+            super.decreaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.decreaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+        }
     }
 }
 
@@ -53,9 +78,21 @@ class Boot : Equipment {
     init(name: String, price: Int, description: String, rarity: String, health: Int, defense: Int) {
         self.defense = defense
         self.health = health
-
         super.init(name: name, price: price, description: description, rarity: rarity)
     }
+    
+    override func use(player: Character) {
+        if (equipped) {
+            self.equipped = false
+            super.increaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.increaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+        } else {
+            self.equipped = true
+            super.decreaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.decreaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+        }
+    }
+    
 }
 
 class Gloves : Equipment {
@@ -68,6 +105,20 @@ class Gloves : Equipment {
         self.luck = luck
         super.init(name: name, price: price, description: description, rarity: rarity)
     }
+    
+    override func use(player: Character) {
+        if (equipped) {
+            self.equipped = false
+            super.increaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.increaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+            super.increaseStats(type: "luck", amount: self.luck, entity: player as! Player)
+        } else {
+            self.equipped = true
+            super.decreaseStats(type: "health", amount: self.health, entity: player as! Player)
+            super.decreaseStats(type: "defense", amount: self.defense, entity: player as! Player)
+            super.decreaseStats(type: "luck", amount: self.luck, entity: player as! Player)
+        }
+    }
 }
 
 class Sword : Equipment {
@@ -79,6 +130,19 @@ class Sword : Equipment {
         self.luck = luck
         super.init(name: name, price: price, description: description, rarity: rarity)
     }
+    
+    override func use(player: Character) {
+        if (equipped) {
+            self.equipped = false
+            super.increaseStats(type: "attack", amount: self.attack, entity: player as! Player)
+            super.increaseStats(type: "luck", amount: self.luck, entity: player as! Player)
+        } else {
+            self.equipped = true
+            super.increaseStats(type: "attack", amount: self.attack, entity: player as! Player)
+            super.decreaseStats(type: "luck", amount: self.luck, entity: player as! Player)
+        }
+    }
+    
 }
 
 

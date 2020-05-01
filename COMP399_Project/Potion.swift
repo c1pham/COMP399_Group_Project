@@ -20,7 +20,7 @@ class Potion : Item {
         super.init(name: name, price: price, description: description)
     }
     
-    override func use(player: Any) {
+    override func use(player: Character) {
         print("Potion is used")
     }
     
@@ -35,19 +35,21 @@ class HealPotion: Potion {
         super.init(name: name, price: price, description: description, stat: "health" ,amount: amount)
     }
     
-    override func use(player: Any) {
-        print("Healed")
+    override func use(player: Character) {
+        player.changeHealth(-self.amount)
     }
 }
 
 
+// These can be implemented later
+/*
 class PernamentPotion: Potion {
     
     override init(name: String, price: Int, description: String, stat: String, amount : Int) {
         super.init(name: name, price: price, description: description, stat: stat ,amount: amount)
     }
     
-    override func use(player: Any) {
+    override func use(player: Character) {
         print("pernament change")
     }
 }
@@ -60,7 +62,7 @@ class TemporaryPotion: Potion {
         super.init(name: name, price: price, description: description, stat: stat, amount: amount)
     }
     
-    override func use(player: Any) {
+    override func use(player: Character) {
         print("temp change")
     }
     
@@ -69,3 +71,4 @@ class TemporaryPotion: Potion {
     }
     
 }
+*/

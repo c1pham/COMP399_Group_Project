@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Level Up-->
         <scene sceneID="CYO-Hm-eF7">
             <objects>
                 <viewController id="F3u-b8-ONa" sceneMemberID="viewController">
@@ -33,18 +33,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H46-if-fxk">
-                                <rect key="frame" x="56" y="772" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Done"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3X0-aj-JhE">
-                                <rect key="frame" x="296" y="772" width="87" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Store Button"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTH-Co-u72">
                                 <rect key="frame" x="74" y="405" width="23" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -93,23 +81,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE5-GX-dcr">
-                                <rect key="frame" x="175" y="772" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Inventory"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5gw-ur-Hcr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="RxL-Tt-6Kq"/>
+                    <tabBarItem key="tabBarItem" title="Level Up" id="RxL-Tt-6Kq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrH-9f-4GA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-322" y="-559"/>
         </scene>
-        <!--Item-->
+        <!--Store-->
         <scene sceneID="5qc-wA-Gqe">
             <objects>
                 <viewController id="vGt-xc-8Vb" sceneMemberID="viewController">
@@ -163,35 +145,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6J-bQ-nV7">
-                                <rect key="frame" x="29" y="775" width="90" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Battle Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXe-uf-lsr">
-                                <rect key="frame" x="285" y="775" width="109" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Level Up Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdg-he-1oV">
-                                <rect key="frame" x="175" y="775" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Inventory"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="LCx-UJ-adI"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="0dB-K7-PMf"/>
+                    <tabBarItem key="tabBarItem" title="Store" id="0dB-K7-PMf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trM-n5-jJi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1130" y="137"/>
         </scene>
-        <!--Item-->
+        <!--Bag-->
         <scene sceneID="1oD-xd-L9U">
             <objects>
                 <viewController id="TVQ-F2-vcc" sceneMemberID="viewController">
@@ -235,13 +199,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="wB4-oB-4qw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="LS3-he-tO2"/>
+                    <tabBarItem key="tabBarItem" title="Bag" id="LS3-he-tO2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHW-6V-bEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="452" y="-222"/>
         </scene>
-        <!--Item-->
+        <!--Battle-->
         <scene sceneID="nxE-mm-Aji">
             <objects>
                 <viewController id="LhA-BD-UUY" sceneMemberID="viewController">
@@ -293,16 +257,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Fxe-fe-FSW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="nYX-PJ-s0F"/>
+                    <tabBarItem key="tabBarItem" title="Battle" id="nYX-PJ-s0F"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agx-Aw-IKE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-323" y="137"/>
         </scene>
-        <!--Item 1-->
+        <!--Main-->
         <scene sceneID="mrJ-xU-HLH">
             <objects>
-                <viewController id="YgS-9M-guM" sceneMemberID="viewController">
+                <viewController title="Main" id="YgS-9M-guM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="egW-SZ-mdY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +302,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="HaQ-BU-PGq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="1qE-Le-tNT"/>
+                    <tabBarItem key="tabBarItem" title="Main" id="1qE-Le-tNT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXF-Ph-Lky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
