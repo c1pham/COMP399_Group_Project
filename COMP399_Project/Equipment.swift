@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Equipment : Item {
+class Equipment : GameItem {
     var grade : String
     var equipped: Bool
     
@@ -26,6 +26,7 @@ class Equipment : Item {
     override func display() -> String {
         return super.display() + ", Grade: \(self.grade), Equipped: \(self.equipped)"
     }
+
 }
 
 class Helmet : Equipment {

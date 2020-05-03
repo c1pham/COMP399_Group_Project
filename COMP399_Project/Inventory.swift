@@ -9,7 +9,7 @@
 import Foundation
 
 class Inventory {
-    var items : [Item]
+    var items : [GameItem]
     var count : Int
     
     init() {
@@ -17,7 +17,7 @@ class Inventory {
         self.count = 0
     }
     
-    init(items: [Item]) {
+    init(items: [GameItem]) {
         self.items = items
         self.count = items.count
     }
@@ -32,13 +32,18 @@ class Inventory {
     }
     
     
-    func removeAt(index: Int) {
-        items.remove(at: index)
+    func removeAt(index: Int) -> GameItem? {
+        if (index < items.count) {
+            self.count = self.count - 1
+            return items.remove(at: index)
+        }
+        return nil
     }
     
-    func remove(ID : Int) -> Item? {
+    func remove(ID : Int) -> GameItem? {
         let num = find(ID: ID)
         if (num != -1) {
+            self.count = self.count - 1
             let found = self.items[num]
             self.items.remove(at: num)
             return found
@@ -46,9 +51,10 @@ class Inventory {
         return nil
     }
     
-    func remove(item: Item) -> Item? {
+    func remove(item: GameItem) -> GameItem? {
         for bagItem in self.items {
             if (bagItem.ID == item.ID) {
+                self.count = self.count - 1
                 let item = self.remove(ID: bagItem.ID)
                 return item
             }
@@ -56,7 +62,7 @@ class Inventory {
         return nil
     }
     
-    func add(item: Item) {
+    func add(item: GameItem) {
         items.append(item)
         self.count = self.count + 1
     }
