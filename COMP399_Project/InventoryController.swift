@@ -22,17 +22,15 @@ class InventoryController: UITableViewController {
         }
     }
     */
-    override func viewDidLoad() {
-        DataView = (parent as! GameTabBarViewController)
-        itemSections = ["HealPotion", "Sword", "Helmet", "Gloves", "ChestPiece", "Boot"]
+    func loadItemData() {
         let bag = DataView?.bag
         
-        var healPotionData : [GameItem] = []
-        var swordData : [GameItem] = []
-        var helmetData : [GameItem] = []
-        var gloveData : [GameItem] = []
-        var chestPieceData : [GameItem] = []
-        var bootData : [GameItem] = []
+        var healPotionData : [GameItem?] = []
+        var swordData : [GameItem?] = []
+        var helmetData : [GameItem?] = []
+        var gloveData : [GameItem?] = []
+        var chestPieceData : [GameItem?] = []
+        var bootData : [GameItem?] = []
         
         for num in 0 ... bag!.count-1  {
             let item : GameItem = bag!.items[num]
@@ -52,9 +50,14 @@ class InventoryController: UITableViewController {
                 bootData.append(item)
             }
         }
-        
         itemData = [healPotionData as AnyObject, swordData as AnyObject, helmetData as AnyObject, gloveData as AnyObject, chestPieceData as AnyObject, bootData as AnyObject]
-        
+    }
+    
+    
+    override func viewDidLoad() {
+        DataView = (parent as! GameTabBarViewController)
+        itemSections = ["HealPotion", "Sword", "Helmet", "Gloves", "ChestPiece", "Boot"]
+        loadItemData()
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -62,6 +65,11 @@ class InventoryController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadItemData()
+        super.viewDidAppear(true)
     }
 
     // MARK: - Table view data source
@@ -96,7 +104,9 @@ class InventoryController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let item = ((itemData[indexPath.section] as! [AnyObject])[indexPath.row] as! GameItem)
+
          // 1st step set up alert controller 1st
         let alertController = UIAlertController(title: "Select Action", message: "There are mutiple options", preferredStyle: UIAlertController.Style.alert)
         // 2rd step create actions/ buttons
@@ -106,13 +116,14 @@ class InventoryController: UITableViewController {
         let useAction = UIAlertAction(title: "Use", style:
             UIAlertAction.Style.default, handler: {(alertAction: UIAlertAction) in
                 item.use(player: (self.DataView!.player as Character))
+                if (type(of: item) == HealPotion.self) {
+                    self.DataView?.bag.remove(ID: item.ID)
+                    self.loadItemData()
+                    self.loadView()
+                }
 
         }) // title is like how OK btn has title
         
-        
-        
-        
-            
         let descriptionAction = UIAlertAction(title: "Get Description", style: UIAlertAction.Style.default, handler: {(alertAction : UIAlertAction) in
             let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
             let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
@@ -120,12 +131,21 @@ class InventoryController: UITableViewController {
             descriptionAlertController.addAction(defaultAction)
             self.present(descriptionAlertController, animated: true, completion: nil )}
         )
+        
+        let removeAction = UIAlertAction(title: "Remove Item", style: UIAlertAction.Style.destructive, handler: {(alertAction : UIAlertAction) in
+            self.DataView?.bag.remove(ID: item.ID)
+            self.loadItemData()
+            self.loadView()
+        })
+        
+        //let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
                
         let okAction = UIAlertAction(title: "Exit", style: UIAlertAction.Style.cancel, handler: nil)
                
         // 3rd Step: add actions/button to alert controller
         alertController.addAction(useAction)
         alertController.addAction(descriptionAction)
+        alertController.addAction(removeAction)
         alertController.addAction(okAction)
                
         // last step present controller
@@ -147,7 +167,7 @@ class InventoryController: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return false
     }
     */
 
