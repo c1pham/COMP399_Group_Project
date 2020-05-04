@@ -29,7 +29,7 @@ class ItemFactory {
         ["Large Hp Potion", 0 , "Heals a lot", "health", 100]
     ]
     
-    
+    /*
     enum PERM_POTION : Int{
         case NAME = 0
         case PRICE = 1
@@ -75,7 +75,7 @@ class ItemFactory {
         ["Large Temporary Attack Boost Potion", 0 , "Pernamently Increase HP", "attack", 100],
         ["Large Temporary Defense Boost Potion", 0 , "Pernamently Increase HP", "defense", 100],
         ["Large Temporary Luck HP Boost Potion", 0 , "Pernamently Increase HP", "luck", 100]
-    ]
+    ]*/
     
     enum SWORD : Int {
         case NAME = 0
@@ -156,16 +156,21 @@ class ItemFactory {
     }
     
     let glovesStats = [
-        ["Ripped mittins", 0, "A broken bowl", "scrap", 1 , 1],
-        ["Miners gloves", 0, "A old miner's boots", "uncommon", 4, 4],
-        ["Rusty Knight's Gauntlet", 0, "A knight's helemt", "rare", 10 , 10],
-        ["Kan's Gaunlets", 0, "The gauntlet the legend Kan had", "mythic", 30 , 30],
-        ["Author's Gauntlets", 0, "The King's choice for an boots", "legendary", 100 , 100]
+        ["Ripped mittins", 0, "A broken bowl", "scrap", 1 , 1, 1],
+        ["Miners gloves", 0, "A old miner's boots", "uncommon", 4, 4, 4],
+        ["Rusty Knight's Gauntlet", 0, "A knight's helemt", "rare", 10 , 10, 10],
+        ["Kan's Gaunlets", 0, "The gauntlet the legend Kan had", "mythic", 30 , 30, 30],
+        ["Author's Gauntlets", 0, "The King's choice for an boots", "legendary", 100 , 100, 100]
     ]
     
     
     
     func produceItem(name : String, type: String) -> GameItem? {
+        /*else if (type == "perm_potion") {
+            item = PernamentPotion(name: permPotionStats[index][PERM_POTION.NAME.rawValue] as! String, price: permPotionStats[index][PERM_POTION.PRICE.rawValue] as! Int, description: permPotionStats[index][PERM_POTION.DESCRIPTION.rawValue] as! String, stat: permPotionStats[index][PERM_POTION.STAT.rawValue] as! String, amount: permPotionStats[index][PERM_POTION.AMOUNT.rawValue] as! Int)
+        } else if (type == "temp_potion") {
+            item = TemporaryPotion(name: tempPotionStats[index][TEMP_POTION.NAME.rawValue] as! String, price: tempPotionStats[index][TEMP_POTION.PRICE.rawValue] as! Int, description: tempPotionStats[index][TEMP_POTION.DESCRIPTION.rawValue] as! String, stat: tempPotionStats[index][TEMP_POTION.STAT.rawValue] as! String, amount: tempPotionStats[index][TEMP_POTION.AMOUNT.rawValue] as! Int, turns: tempPotionStats[index][TEMP_POTION.DURATION.rawValue] as! Int)
+        } */
         var item : GameItem? = nil
         var itemStats : [[Any]]
         
@@ -197,14 +202,13 @@ class ItemFactory {
         
         if (type == "heal_potion") {
             item = HealPotion(name: healPotionStats[index][HEAL_POTION.NAME.rawValue] as! String, price: healPotionStats[index][HEAL_POTION.PRICE.rawValue] as! Int, description: healPotionStats[index][HEAL_POTION.DESCRIPTION.rawValue] as! String, amount: healPotionStats[index][HEAL_POTION.AMOUNT.rawValue] as! Int)
-        } /*else if (type == "perm_potion") {
-            item = PernamentPotion(name: permPotionStats[index][PERM_POTION.NAME.rawValue] as! String, price: permPotionStats[index][PERM_POTION.PRICE.rawValue] as! Int, description: permPotionStats[index][PERM_POTION.DESCRIPTION.rawValue] as! String, stat: permPotionStats[index][PERM_POTION.STAT.rawValue] as! String, amount: permPotionStats[index][PERM_POTION.AMOUNT.rawValue] as! Int)
-        } else if (type == "temp_potion") {
-            item = TemporaryPotion(name: tempPotionStats[index][TEMP_POTION.NAME.rawValue] as! String, price: tempPotionStats[index][TEMP_POTION.PRICE.rawValue] as! Int, description: tempPotionStats[index][TEMP_POTION.DESCRIPTION.rawValue] as! String, stat: tempPotionStats[index][TEMP_POTION.STAT.rawValue] as! String, amount: tempPotionStats[index][TEMP_POTION.AMOUNT.rawValue] as! Int, turns: tempPotionStats[index][TEMP_POTION.DURATION.rawValue] as! Int)
-        } */ else if (type == "helmet") {
+        } else if (type == "helmet") {
             item = Helmet(name: helmetStats[index][HELMET.NAME.rawValue] as! String, price: helmetStats[index][HELMET.PRICE.rawValue] as! Int, description:  helmetStats[index][HELMET.DESCRIPTION.rawValue] as! String, rarity:  helmetStats[index][HELMET.GRADE.rawValue] as! String, health: helmetStats[index][HELMET.HEALTH.rawValue] as! Int, defense: helmetStats[index][HELMET.DEFENSE.rawValue] as! Int)
         } else if (type == "gloves") {
-            item = Gloves(name: glovesStats[index][GLOVES.NAME.rawValue] as! String, price: glovesStats[index][GLOVES.PRICE.rawValue] as! Int, description:  glovesStats[index][GLOVES.DESCRIPTION.rawValue] as! String, rarity:  glovesStats[index][GLOVES.GRADE.rawValue] as! String, health: glovesStats[index][GLOVES.HEALTH.rawValue] as! Int, defense: glovesStats[index][GLOVES.DEFENSE.rawValue] as! Int, luck: glovesStats[index][GLOVES.LUCK.rawValue] as! Int)
+            /*
+            item = Gloves(name: glovesStats[index][GLOVES.NAME.rawValue] as! String, price: glovesStats[index][GLOVES.PRICE.rawValue] as! Int, description:  glovesStats[index][GLOVES.DESCRIPTION.rawValue] as! String, rarity:  glovesStats[index][GLOVES.GRADE.rawValue] as! String, health: glovesStats[index][GLOVES.HEALTH.rawValue] as! Int, defense: glovesStats[index][GLOVES.DEFENSE.rawValue] as! Int, luck: glovesStats[index][GLOVES.LUCK.rawValue] as! Int)*/
+            item = Gloves(name: glovesStats[index][GLOVES.NAME.rawValue] as! String, price: glovesStats[index][GLOVES.PRICE.rawValue] as! Int, description: glovesStats[index][GLOVES.DESCRIPTION.rawValue] as! String, rarity: glovesStats[index][GLOVES.GRADE.rawValue] as! String, health: glovesStats[index][GLOVES.HEALTH.rawValue] as! Int, defense: glovesStats[index][GLOVES.DEFENSE.rawValue] as! Int, luck: glovesStats[index][GLOVES.LUCK.rawValue] as! Int)
+           
         } else if (type == "boot") {
             item = Boot(name: bootStats[index][BOOT.NAME.rawValue] as! String, price: bootStats[index][BOOT.PRICE.rawValue] as! Int, description:  bootStats[index][BOOT.DESCRIPTION.rawValue] as! String, rarity:  bootStats[index][BOOT.GRADE.rawValue] as! String, health: bootStats[index][BOOT.HEALTH.rawValue] as! Int, defense: bootStats[index][BOOT.DEFENSE.rawValue] as! Int)
         } else if (type == "sword") {
@@ -212,7 +216,7 @@ class ItemFactory {
         } else if (type == "chest_piece") {
             item = ChestPiece(name: chestPieceStats[index][CHEST_PIECE.NAME.rawValue] as! String, price: chestPieceStats[index][CHEST_PIECE.PRICE.rawValue] as! Int, description:  chestPieceStats[index][CHEST_PIECE.DESCRIPTION.rawValue] as! String, rarity:  chestPieceStats[index][CHEST_PIECE.GRADE.rawValue] as! String, health: chestPieceStats[index][CHEST_PIECE.HEALTH.rawValue] as! Int, defense: chestPieceStats[index][CHEST_PIECE.DEFENSE.rawValue] as! Int)
         }
-        
+        print(item!)
         return item
     }
     

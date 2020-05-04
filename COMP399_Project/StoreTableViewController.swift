@@ -6,13 +6,67 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+
+// found load view function here
+// https://stackoverflow.com/questions/31207783/swift-reload-a-view-controller
 import UIKit
 
 class StoreTableViewController: UITableViewController {
+    var DataView :  GameTabBarViewController? = nil
+    var itemData : [AnyObject] = []
+    var itemSections : [String?] = []
+    var factory = ItemFactory()
+    
+    var inventoryView : InventoryController? = nil
     
     
 
     override func viewDidLoad() {
+        
+        DataView = (parent as! GameTabBarViewController)
+        itemSections = ["HealPotion", "Sword", "Helmet", "Gloves", "ChestPiece", "Boot"]
+        inventoryView = DataView?.viewControllers![3] as? InventoryController
+        print("inventory view \(inventoryView!)")
+        var healPotionData : [GameItem?] = []
+        var swordData : [GameItem?] = []
+        var helmetData : [GameItem?] = []
+        var gloveData : [GameItem?] = []
+        var chestPieceData : [GameItem?] = []
+        var bootData : [GameItem?] = []
+        
+        print("start heal")
+        for num in 0 ... factory.healPotionStats.count - 1  {
+            healPotionData.append(factory.produceItem(name: factory.healPotionStats[num][0] as! String, type: "heal_potion"))
+        }
+        print("finish heal")
+        
+        for num in 0 ... factory.swordStats.count - 1 {
+            swordData.append(factory.produceItem(name: factory.swordStats[num][0] as! String, type: "sword"))
+        }
+        print("finish sword")
+        
+        for num in 0 ... factory.helmetStats.count - 1 {
+            helmetData.append(factory.produceItem(name: factory.helmetStats[num][0] as! String, type: "helmet"))
+        }
+        print("finish helemt")
+        
+        for num in 0 ... factory.glovesStats.count - 1 {
+            gloveData.append(factory.produceItem(name: factory.glovesStats[num][0] as! String, type: "gloves"))
+        }
+        print("finish gloves")
+        
+        for num in 0 ... factory.chestPieceStats.count - 1 {
+            chestPieceData.append(factory.produceItem(name: factory.chestPieceStats[num][0] as! String, type: "chest_piece"))
+        }
+        print("finish chest")
+        
+        for num in 0 ... factory.bootStats.count - 1 {
+            bootData.append(factory.produceItem(name: factory.bootStats[num][0] as! String, type: "boot"))
+        }
+        print("finish boot")
+        
+        itemData = [healPotionData as AnyObject, swordData as AnyObject, helmetData as AnyObject, gloveData as AnyObject, chestPieceData as AnyObject, bootData as AnyObject]
+        
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -26,12 +80,68 @@ class StoreTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return itemSections.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return itemSections[section]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return itemData[section].count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "storeItem", for: indexPath) //placeholder of prototype cell
+        let item = ((itemData[indexPath.section] as! [AnyObject])[indexPath.row] as! GameItem)
+        cell.textLabel!.text = item.name
+        cell.detailTextLabel!.text = "Description: \(item.description), Price: \(item.price)"
+        
+        //cell.imageView!.image = UIImage(named: ((flowerData[indexPath.section] as! [AnyObject])[indexPath.row] as! [String:String])["picture"]!)!
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemType = ["heal_potion", "sword", "helmet", "gloves", "chest_piece", "boot"]
+        let item = ((itemData[indexPath.section] as! [AnyObject])[indexPath.row] as! GameItem)
+       
+        print("table view item \(item.display())")
+
+         // 1st step set up alert controller 1st
+        let alertController = UIAlertController(title: "Select Action", message: "There are mutiple options", preferredStyle: UIAlertController.Style.alert)
+        // 2rd step create actions/ buttons
+        // we can do different style, we can do closer
+        // alert action is input, then in keyword after is seperator between input and function, we put in {} because it is closure, the input is the UI alert action and the extra statement we want to perform is we want to perform string content
+        // when now action is trigger, closure is like a tiny function but closure does not have name where as function has name, when we call fucntion we need function name, but for closure we just need to put stuff in curly parathesis
+  
+        let descriptionAction = UIAlertAction(title: "Get Description", style: UIAlertAction.Style.default, handler: {(alertAction : UIAlertAction) in
+            let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            // this is how we add button to alert controller, which is okay btn action
+            descriptionAlertController.addAction(defaultAction)
+            self.present(descriptionAlertController, animated: true, completion: nil )}
+        )
+        
+        let buyAction = UIAlertAction(title: "Buy Item", style: UIAlertAction.Style.default, handler: {(alertAction : UIAlertAction) in
+            let item = self.factory.produceItem(name: item.name, type: itemType[indexPath.section])!
+            print("buy \(item)")
+            self.DataView?.bag.add(item: item)
+            self.inventoryView?.tableView.reloadData()
+        })
+        
+        //let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
+               
+        let okAction = UIAlertAction(title: "Exit", style: UIAlertAction.Style.cancel, handler: nil)
+               
+        // 3rd Step: add actions/button to alert controller
+        alertController.addAction(descriptionAction)
+        alertController.addAction(buyAction)
+        alertController.addAction(okAction)
+               
+        // last step present controller
+        present(alertController, animated: true, completion: nil)
+        
     }
 
     /*

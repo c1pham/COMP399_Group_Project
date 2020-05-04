@@ -12,12 +12,15 @@ class GameTabBarViewController: UITabBarController {
     var player = Player(name: "John", stats: [1,1,1,1], sprite: "None")
     var bag = Inventory()
     let factory = ItemFactory()
+    
+    
 
     override func viewDidLoad() {
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
+        bag.add(item: factory.produceItem(name: "Ripped mittins", type: "gloves")!)
         bag.add(item: factory.produceItem(name: "Stick", type: "sword")!)
         super.viewDidLoad()
         // Do any additional setup after loading the view.

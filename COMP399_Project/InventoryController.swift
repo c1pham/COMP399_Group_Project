@@ -12,9 +12,7 @@ class InventoryController: UITableViewController {
     var DataView :  GameTabBarViewController? = nil
     var itemData : [AnyObject] = []
     var itemSections : [String?] = []
-    func loadItems() {
-        
-    }
+    
     /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemCell" {
@@ -32,13 +30,14 @@ class InventoryController: UITableViewController {
         var chestPieceData : [GameItem?] = []
         var bootData : [GameItem?] = []
         
-        for num in 0 ... bag!.count-1  {
+        for num in 0 ... bag!.items.count - 1  {
             let item : GameItem = bag!.items[num]
+        
+            print("nil item \(item)")
+            
             if (type(of: item) == HealPotion.self ) {
-               
                 healPotionData.append(item)
             } else if (type(of: item) == Sword.self ) {
-                print("\(item.name) is a sword")
                 swordData.append(item)
             } else if (type(of: item) == Helmet.self ) {
                 helmetData.append(item)
@@ -69,7 +68,14 @@ class InventoryController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         loadItemData()
+        self.tableView.reloadData()
         super.viewDidAppear(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadItemData()
+        self.tableView.reloadData()
+        super.viewWillAppear(true)
     }
 
     // MARK: - Table view data source
@@ -119,7 +125,7 @@ class InventoryController: UITableViewController {
                 if (type(of: item) == HealPotion.self) {
                     self.DataView?.bag.remove(ID: item.ID)
                     self.loadItemData()
-                    self.loadView()
+                    self.tableView.reloadData()
                 }
 
         }) // title is like how OK btn has title
@@ -136,6 +142,7 @@ class InventoryController: UITableViewController {
             self.DataView?.bag.remove(ID: item.ID)
             self.loadItemData()
             self.loadView()
+
         })
         
         //let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
