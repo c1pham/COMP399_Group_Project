@@ -83,11 +83,13 @@ class Boot : Equipment {
     }
     
     override func use(player: Character) {
-        if (equipped) {
+        let player = (player as! Player)
+        if (equipped && player.bootEquipped == false ) {
             self.equipped = false
+            player.bootEquipped = True
             super.increaseStats(type: "health", amount: self.health, entity: player as! Player)
             super.increaseStats(type: "defense", amount: self.defense, entity: player as! Player)
-        } else {
+        } else if (!equipped && (player as! Player).bootEquipped == True) {
             self.equipped = true
             super.decreaseStats(type: "health", amount: self.health, entity: player as! Player)
             super.decreaseStats(type: "defense", amount: self.defense, entity: player as! Player)

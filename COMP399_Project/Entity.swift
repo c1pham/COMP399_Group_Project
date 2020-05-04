@@ -91,6 +91,13 @@ class Player: Character{
     var weaponEquip = 0         //No Weapon Equipped
     var armorEquip = [0,0,0,0]  //No Armor Equipped
     
+    var helmetEquipped = false;
+    var chestPieceEquipped = false;
+    var glovesEquipped = false;
+    var bootEquipped = false;
+    var swordEquipped = false;
+    
+    
     //When Player levels up
     func levelUp(){
         

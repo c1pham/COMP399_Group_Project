@@ -13,10 +13,8 @@ import Foundation
 class Potion : GameItem {
     var stat: String
     var amount: Int
-    var used : Bool
-    
+   
     init(name: String, price: Int, description: String, stat: String, amount: Int) {
-        self.used = false
         self.stat = stat
         self.amount = amount
         super.init(name: name, price: price, description: description)
@@ -38,10 +36,8 @@ class HealPotion: Potion {
     }
     
     override func use(player: Character) {
-        if (used == false) {
-            player.changeHealth(-self.amount)
-            self.used = true
-        }
+        player.changeHealth(-self.amount)
+        print(player.getCurrentHealth())
     }
 }
 
