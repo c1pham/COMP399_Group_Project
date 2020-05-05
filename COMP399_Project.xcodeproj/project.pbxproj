@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C4798E02461A971000F125E /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4798DF2461A971000F125E /* BattleViewController.swift */; };
+		2C4798E22461D137000F125E /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4798E12461D137000F125E /* CreationViewController.swift */; };
 		364338DC246091E90066B411 /* LevelUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364338DB246091E90066B411 /* LevelUpViewController.swift */; };
 		A9094511245DFDF600A2835D /* InventoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9094510245DFDF600A2835D /* InventoryController.swift */; };
 		A9094515245E0EBC00A2835D /* GameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9094514245E0EBC00A2835D /* GameItem.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		2C4798DF2461A971000F125E /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		2C4798E12461D137000F125E /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		364338DB246091E90066B411 /* LevelUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpViewController.swift; sourceTree = "<group>"; };
 		A9094510245DFDF600A2835D /* InventoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryController.swift; sourceTree = "<group>"; };
 		A9094513245E038700A2835D /* Items */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Items; path = ../../Items; sourceTree = "<group>"; };
@@ -88,8 +90,9 @@
 				A9E1D259244E2F18009B5865 /* AppDelegate.swift */,
 				A9E1D25B244E2F18009B5865 /* SceneDelegate.swift */,
 				A9E1D25D244E2F19009B5865 /* ViewController.swift */,
-				364338DB246091E90066B411 /* LevelUpViewController.swift */,
 				A9E1D25F244E2F19009B5865 /* Main.storyboard */,
+				2C4798E12461D137000F125E /* CreationViewController.swift */,
+				364338DB246091E90066B411 /* LevelUpViewController.swift */,
 				2C4798DF2461A971000F125E /* BattleViewController.swift */,
 				A9E1D26D244E3512009B5865 /* GameTabBarViewController.swift */,
 				A9E1D272244E6B8E009B5865 /* Entity.swift */,
@@ -178,6 +181,7 @@
 				A9E1D25E244E2F19009B5865 /* ViewController.swift in Sources */,
 				A98EF8292459F2B00065A6D4 /* Equipment.swift in Sources */,
 				A98EF82F245B09D90065A6D4 /* Inventory.swift in Sources */,
+				2C4798E22461D137000F125E /* CreationViewController.swift in Sources */,
 				A9E1D273244E6B8E009B5865 /* Entity.swift in Sources */,
 				A9E0285C245FAD340064849F /* StoreTableViewController.swift in Sources */,
 				A9E1D25A244E2F18009B5865 /* AppDelegate.swift in Sources */,
