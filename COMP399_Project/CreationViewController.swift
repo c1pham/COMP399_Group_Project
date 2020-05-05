@@ -27,16 +27,20 @@ class CreationViewController: UIViewController {
     @IBOutlet weak var defensePnt: UILabel!
     @IBOutlet weak var luckPnt: UILabel!
     
+    //Steppers
+    @IBOutlet weak var stepper1: UIStepper!
+    @IBOutlet weak var stepper2: UIStepper!
+    @IBOutlet weak var stepper3: UIStepper!
+    @IBOutlet weak var stepper4: UIStepper!
+    
+    
     @IBAction func stepperPressed(_ sender: UIStepper) {
         let tag = sender.tag
         let val = Int(sender.value)
         
         //If the Health Stepper pressed
         if tag == 1{
-            
-            //Change max Value to appropriate amount
-            sender.maximumValue = Double(statPoints + health)
-            
+ 
             //If the value has increased, increase health
             if val > health {
                 statPoints -= 1
@@ -50,13 +54,9 @@ class CreationViewController: UIViewController {
             
             //Change texts to appropriate value
             healthPnt.text = "Current Value: \(health)"
-            statPnt.text = "Current Number of Stat Points: \(statPoints)"
         
         //If the Attack Stepper pressed
         } else if tag == 2{
-            
-            //Change max Value to appropriate amount
-            sender.maximumValue = Double(statPoints + attack)
             
             //If the value has increased, increase attack
             if val > attack {
@@ -71,13 +71,9 @@ class CreationViewController: UIViewController {
             
             //Change texts to appropriate value
             attackPnt.text = "Current Value: \(attack)"
-            statPnt.text = "Current Number of Stat Points: \(statPoints)"
             
         //If the Defense Stepper pressed
         } else if tag == 3{
-            
-            //Change max Value to appropriate amount
-            sender.maximumValue = Double(statPoints + defense)
             
             //If the value has increased, increase defense
             if val > defense {
@@ -91,14 +87,10 @@ class CreationViewController: UIViewController {
             }
             
             //Change texts to appropriate value
-            attackPnt.text = "Current Value: \(defense)"
-            statPnt.text = "Current Number of Stat Points: \(statPoints)"
+            defensePnt.text = "Current Value: \(defense)"
             
         //If the Luck Stepper pressed
-        } else if tag == 2{
-            
-            //Change max Value to appropriate amount
-            sender.maximumValue = Double(statPoints + luck)
+        } else if tag == 4{
             
             //If the value has increased, increase attack
             if val > luck {
@@ -112,21 +104,35 @@ class CreationViewController: UIViewController {
             }
             
             //Change texts to appropriate value
-            attackPnt.text = "Current Value: \(luck)"
-            statPnt.text = "Current Number of Stat Points: \(statPoints)"
+            luckPnt.text = "Current Value: \(luck)"
         }
+        
+        //Set the new maximumValues
+        stepper1.maximumValue = Double(health + statPoints)
+        stepper2.maximumValue = Double(attack + statPoints)
+        stepper3.maximumValue = Double(defense + statPoints)
+        stepper4.maximumValue = Double(luck + statPoints)
+        
+        //Update Stat Points
+        statPnt.text = "Current Number of Stat Points: \(statPoints)"
     }
     
     //Save Button
     @IBAction func saveButton(_ sender: Any) {
+        
+        //Get the various stats and name of character
         let stats = [health, attack, defense, luck]
         let name = nameTextField.text!
-        print(name)
         
-        print("before")
-        print("after")
+        //Create a character using the various stats
         (presentingViewController as! GameTabBarViewController).player = Player(name: name, stats: stats, sprite: [])
+        
+        //Save the unused stat points
+        (presentingViewController as! GameTabBarViewController).player.setStatPoint(statPoints)
+        
         ((presentingViewController as! GameTabBarViewController).viewControllers![0] as! MainViewController).loadInfo()
+        
+        //Dismiss view
         self.dismiss(animated: true, completion: nil)
     }
     

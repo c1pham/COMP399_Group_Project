@@ -120,6 +120,8 @@ class BattleViewController: UIViewController {
                 
                 //If the player has enough Exp levelup
                 if player.curExp >= player.maxExp{
+                    battlePrevText = battleText.text
+                    battleText.text = "Congradulations, you leveled up! \n" + battlePrevText!
                     player.levelUp()
                 }
                 
@@ -202,9 +204,37 @@ class BattleViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Get Player
         player = (parent as! GameTabBarViewController).player
+        
+        //Set health
         playerHealth.text = "\(player.getCurrentHealth())"
-        super.viewWillAppear(true)
+        
+        //Player is alive
+        if player.getCurrentHealth() > 0 {
+            playerIsDead = false
+        }
+        
+        //Create the animation
+        if !player.swordEquipped{
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_\(i+1)")!)
+            }
+        } else {
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_sword_\(i+1)")!)
+            }
+        }
+        
+        //Set the animation with duration
+        playerImage.animationImages = animation
+        playerImage.animationDuration = 4
+        
+        //Start animating
+        playerImage.startAnimating()
+        
     }
 
     override func viewDidLoad() {

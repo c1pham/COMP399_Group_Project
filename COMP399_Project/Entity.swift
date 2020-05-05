@@ -9,9 +9,6 @@
 //COMMENT
 import Foundation
 
-
-
-
 class Character {
     
     var name: String            //Name of Character
@@ -99,7 +96,7 @@ class Character {
 class Player: Character{
 
     var curExp = 0              //Current number of experience the player has
-    var maxExp = 100            //Max number of exprience the player can have before level up
+    var maxExp = 1            //Max number of exprience the player can have before level up
     var statPoints = 0          //Points available after level up
     var weaponEquip = 0         //No Weapon Equipped
     var armorEquip = [0,0,0,0]  //No Armor Equipped
@@ -112,6 +109,9 @@ class Player: Character{
     //When Player levels up
     func levelUp(){
         
+        //Refresh Health
+        curHp = maxHp
+        
         //Make sure that the current Exp is reduced to appropriate amount
         curExp = curExp - maxExp
         
@@ -119,10 +119,19 @@ class Player: Character{
         maxExp = maxExp + level*level
         
         //Increase number of stats point by 5
-        statPoints += 5
+        statPoints += 2
         
         //Increase level by one
         level += 1
+    }
+    
+    //Change the vaious stats
+    func setStat(_ amt: [Int]){
+        for i in 0..<stats.count{
+            stats[i] = amt[i]
+        }
+        maxHp = stats[0] * 10
+        curHp = maxHp
     }
     
     //Increase the various stats
@@ -181,6 +190,15 @@ class Player: Character{
     //Increase current expierence value
     func increaseExp(_ amount: Int){
         curExp += amount
+    }
+    
+    //Stat points setters and getters
+    func getStatPoint() -> Int{
+        return statPoints
+    }
+    
+    func setStatPoint(_ amt: Int){
+        statPoints = amt
     }
     
     //Change attack by including the weapon
