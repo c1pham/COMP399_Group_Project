@@ -6,9 +6,9 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+// https://stackoverflow.com/questions/48515758/accessing-child-view-controllers-of-a-uitabbarcontroller
 
-// found load view function here
-// https://stackoverflow.com/questions/31207783/swift-reload-a-view-controller
+
 import UIKit
 
 class StoreTableViewController: UITableViewController {
@@ -18,8 +18,6 @@ class StoreTableViewController: UITableViewController {
     var factory = ItemFactory()
     
     var inventoryView : InventoryController? = nil
-    
-    
 
     override func viewDidLoad() {
         
@@ -105,8 +103,6 @@ class StoreTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemType = ["heal_potion", "sword", "helmet", "gloves", "chest_piece", "boot"]
         let item = ((itemData[indexPath.section] as! [AnyObject])[indexPath.row] as! GameItem)
-       
-        print("table view item \(item.display())")
 
          // 1st step set up alert controller 1st
         let alertController = UIAlertController(title: "Select Action", message: "There are mutiple options", preferredStyle: UIAlertController.Style.alert)

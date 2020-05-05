@@ -216,7 +216,6 @@ class ItemFactory {
         } else if (type == "chest_piece") {
             item = ChestPiece(name: chestPieceStats[index][CHEST_PIECE.NAME.rawValue] as! String, price: chestPieceStats[index][CHEST_PIECE.PRICE.rawValue] as! Int, description:  chestPieceStats[index][CHEST_PIECE.DESCRIPTION.rawValue] as! String, rarity:  chestPieceStats[index][CHEST_PIECE.GRADE.rawValue] as! String, health: chestPieceStats[index][CHEST_PIECE.HEALTH.rawValue] as! Int, defense: chestPieceStats[index][CHEST_PIECE.DEFENSE.rawValue] as! Int)
         }
-        print(item!)
         return item
     }
     
