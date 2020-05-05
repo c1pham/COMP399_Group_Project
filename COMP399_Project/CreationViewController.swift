@@ -121,11 +121,12 @@ class CreationViewController: UIViewController {
     @IBAction func saveButton(_ sender: Any) {
         let stats = [health, attack, defense, luck]
         let name = nameTextField.text!
+        print(name)
         
         print("before")
         print("after")
         (presentingViewController as! GameTabBarViewController).player = Player(name: name, stats: stats, sprite: [])
-        
+        ((presentingViewController as! GameTabBarViewController).viewControllers![0] as! MainViewController).loadInfo()
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -9,12 +9,35 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
+    var DataView : GameTabBarViewController? = nil
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var goldLabel: UILabel!
+    
+    @IBOutlet weak var levelLabel: UILabel!
+    
     override func viewDidLoad() {
+        DataView = parent as! GameTabBarViewController
+        loadInfo()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadInfo()
+        super.viewWillAppear(true)
+    }
+    
+    func loadInfo() {
+        let player = DataView?.player
+        nameLabel.text = "Name: \(player!.name)"
+        goldLabel.text = "Gold: \(player!.gold)"
+        levelLabel.text = "Level: \(player!.level)"
+    }
+    
     
 
     /*
