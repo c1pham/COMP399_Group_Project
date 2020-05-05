@@ -24,9 +24,9 @@ class ItemFactory {
     }
     
     let healPotionStats = [
-        ["Small Hp Potion", 0 , "Heals a little", "health", 10],
-        ["Medium Hp Potion", 0 , "Heals a good amount", "health", 50],
-        ["Large Hp Potion", 0 , "Heals a lot", "health", 100]
+        ["Small Hp Potion", 5 , "Heals a little", "health", 10],
+        ["Medium Hp Potion", 10 , "Heals a good amount", "health", 50],
+        ["Large Hp Potion", 50 , "Heals a lot", "health", 100]
     ]
     
     /*
@@ -87,11 +87,11 @@ class ItemFactory {
     }
     
     let swordStats = [
-        ["Stick", 0, "A old stick", "scrap", 1 , 1],
-        ["Sharpen Bat", 0, "A old sword", "uncommon", 4, 4],
-        ["Rusty Knight's Sword", 0, "A knight's sword", "rare", 10 , 10],
-        ["Lighting Blade", 0, "A blade of lighting", "mythic", 30 , 30],
-        ["Excalibur", 0, "The King's choice of weaponry", "legendary", 100 , 100]
+        ["Stick", 5, "A old stick", "scrap", 1 , 1],
+        ["Sharpen Bat", 10, "A old sword", "uncommon", 4, 4],
+        ["Rusty Knight's Sword", 20, "A knight's sword", "rare", 10 , 10],
+        ["Lighting Blade", 100, "A blade of lighting", "mythic", 30 , 30],
+        ["Excalibur", 1000, "The King's choice of weaponry", "legendary", 100 , 100]
     ]
     
     enum CHEST_PIECE : Int {
@@ -104,11 +104,11 @@ class ItemFactory {
     }
     
     let chestPieceStats = [
-        ["Leather Coat", 0, "A old leather coat", "scrap", 1 , 1],
-        ["Chain Mail", 0, "A old rusty chain mail", "uncommon", 4, 4],
-        ["Rusty Knight's Chestpiece", 0, "A knight's chestpiece", "rare", 10 , 10],
-        ["Golden Fleece", 0, "A golden fleece", "mythic", 30 , 30],
-        ["Author's chestpiece", 0, "The King's choice for an chestpieces", "legendary", 100 , 100]
+        ["Leather Coat", 5, "A old leather coat", "scrap", 1 , 1],
+        ["Chain Mail", 10, "A old rusty chain mail", "uncommon", 4, 4],
+        ["Rusty Knight's Chestpiece", 15, "A knight's chestpiece", "rare", 10 , 10],
+        ["Golden Fleece", 20, "A golden fleece", "mythic", 30 , 30],
+        ["Author's chestpiece", 100, "The King's choice for an chestpieces", "legendary", 100 , 100]
     ]
     
     enum HELMET : Int {
@@ -121,11 +121,11 @@ class ItemFactory {
     }
     
     let helmetStats = [
-        ["Bowl", 0, "A broken bowl", "scrap", 1 , 1],
-        ["Miners Helmet", 0, "A old miner's helmet", "uncommon", 4, 4],
-        ["Rusty Knight's Helmet", 0, "A knight's helmet", "rare", 10 , 10],
-        ["Barbarian King Helmet", 0, "A helmet from the last known Barbarian King", "mythic", 30 , 30],
-        ["Author's helmet", 0, "The King's choice for an helmet", "legendary", 100 , 100]
+        ["Bowl", 5, "A broken bowl", "scrap", 1 , 1],
+        ["Miners Helmet", 10, "A old miner's helmet", "uncommon", 4, 4],
+        ["Rusty Knight's Helmet", 15, "A knight's helmet", "rare", 10 , 10],
+        ["Barbarian King Helmet", 20, "A helmet from the last known Barbarian King", "mythic", 30 , 30],
+        ["Author's helmet", 100, "The King's choice for an helmet", "legendary", 100 , 100]
     ]
     
     enum BOOT : Int{
@@ -138,11 +138,11 @@ class ItemFactory {
     }
     
     let bootStats = [
-        ["Ripped Socks", 0, "A broken bowl", "scrap", 1 , 1],
-        ["Miners Boots", 0, "A old miner's boots", "uncommon", 4, 4],
-        ["Rusty Knight's Boots", 0, "A knight's boots", "rare", 10 , 10],
-        ["Flash's shoes", 0, "A old shoe from the flash", "mythic", 30 , 30],
-        ["Author's boots", 0, "The King's choice for an boots", "legendary", 100 , 100]
+        ["Ripped Socks", 5, "A broken bowl", "scrap", 1 , 1],
+        ["Miners Boots", 10, "A old miner's boots", "uncommon", 4, 4],
+        ["Rusty Knight's Boots", 15, "A knight's boots", "rare", 10 , 10],
+        ["Flash's shoes", 20, "A old shoe from the flash", "mythic", 30 , 30],
+        ["Author's boots", 100, "The King's choice for an boots", "legendary", 100 , 100]
     ]
     
     enum GLOVES : Int {
@@ -156,11 +156,11 @@ class ItemFactory {
     }
     
     let glovesStats = [
-        ["Ripped mittins", 0, "A broken bowl", "scrap", 1 , 1, 1],
-        ["Miners gloves", 0, "A old miner's boots", "uncommon", 4, 4, 4],
-        ["Rusty Knight's Gauntlet", 0, "A knight's helemt", "rare", 10 , 10, 10],
-        ["Kan's Gaunlets", 0, "The gauntlet the legend Kan had", "mythic", 30 , 30, 30],
-        ["Author's Gauntlets", 0, "The King's choice for an boots", "legendary", 100 , 100, 100]
+        ["Ripped mittins", 5, "A broken bowl", "scrap", 1 , 1, 1],
+        ["Miners gloves", 10, "A old miner's boots", "uncommon", 4, 4, 4],
+        ["Rusty Knight's Gauntlet", 60, "A knight's helemt", "rare", 10 , 10, 10],
+        ["Kan's Gaunlets", 80, "The gauntlet the legend Kan had", "mythic", 30 , 30, 30],
+        ["Author's Gauntlets", 100, "The King's choice for an boots", "legendary", 100 , 100, 100]
     ]
     
     

@@ -125,7 +125,6 @@ class CreationViewController: UIViewController {
         print("before")
         print("after")
         (presentingViewController as! GameTabBarViewController).player = Player(name: name, stats: stats, sprite: [])
-        //(presentingViewController as! MainViewController).player =
         
         self.dismiss(animated: true, completion: nil)
     }

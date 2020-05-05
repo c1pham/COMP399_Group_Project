@@ -121,10 +121,23 @@ class StoreTableViewController: UITableViewController {
         
         let buyAction = UIAlertAction(title: "Buy Item", style: UIAlertAction.Style.default, handler: {(alertAction : UIAlertAction) in
             let item = self.factory.produceItem(name: item.name, type: itemType[indexPath.section])!
-            print("buy \(item)")
-            self.DataView?.bag.add(item: item)
-            self.inventoryView?.tableView.reloadData()
-        })
+            if (item.price <= (self.DataView?.player.gold)!) {
+                print("buy \(item)")
+                self.DataView?.bag.add(item: item)
+                self.inventoryView?.tableView.reloadData()
+                let successAlertController = UIAlertController(title: "Success", message: "Item added the inventory", preferredStyle: UIAlertController.Style.alert)
+                let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                // this is how we add button to alert controller, which is okay btn action
+                successAlertController.addAction(defaultAction)
+                self.present(successAlertController, animated: true, completion: nil )
+            } else {
+                let warningAlertController = UIAlertController(title: "Error", message: "You don't have enough money", preferredStyle: UIAlertController.Style.alert)
+                let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                // this is how we add button to alert controller, which is okay btn action
+                warningAlertController.addAction(defaultAction)
+                self.present(warningAlertController, animated: true, completion: nil )}
+            }
+        )
         
         //let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
                

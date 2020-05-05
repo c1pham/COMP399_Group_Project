@@ -32,8 +32,6 @@ class InventoryController: UITableViewController {
         
         for num in 0 ... bag!.items.count - 1  {
             let item : GameItem = bag!.items[num]
-        
-            print("nil item \(item)")
             
             if (type(of: item) == HealPotion.self ) {
                 healPotionData.append(item)
@@ -121,13 +119,30 @@ class InventoryController: UITableViewController {
         // when now action is trigger, closure is like a tiny function but closure does not have name where as function has name, when we call fucntion we need function name, but for closure we just need to put stuff in curly parathesis
         let useAction = UIAlertAction(title: "Use", style:
             UIAlertAction.Style.default, handler: {(alertAction: UIAlertAction) in
-                item.use(player: (self.DataView!.player as Character))
-                if (type(of: item) == HealPotion.self) {
+                let itemType = type(of: item)
+                let player = (self.DataView!.player as Character)
+                if (itemType == HealPotion.self) {
+                    item.use(player: player)
                     self.DataView?.bag.remove(ID: item.ID)
                     self.loadItemData()
                     self.tableView.reloadData()
+                } else if (itemType == Sword.self || itemType == Helmet.self || itemType == Gloves.self || itemType == Boot.self || itemType == ChestPiece.self  ) {
+                    let before = (item as! Equipment).equipped
+                    item.use(player: player)
+                    if (before == (item as! Equipment).equipped) {
+                        let warningAlertController = UIAlertController(title: "Error", message: "Player already has an item of this type equipped", preferredStyle: UIAlertController.Style.alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                        // this is how we add button to alert controller, which is okay btn action
+                        warningAlertController.addAction(defaultAction)
+                        self.present(warningAlertController, animated: true, completion: nil)
+                    } else {
+                        let successAlertController = UIAlertController(title: "Success", message: "Item used", preferredStyle: UIAlertController.Style.alert)
+                        let successAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                        // this is how we add button to alert controller, which is okay btn action
+                        successAlertController.addAction(successAction)
+                        self.present(successAlertController, animated: true, completion: nil)
+                    }
                 }
-
         }) // title is like how OK btn has title
         
         let descriptionAction = UIAlertAction(title: "Get Description", style: UIAlertAction.Style.default, handler: {(alertAction : UIAlertAction) in
@@ -142,7 +157,6 @@ class InventoryController: UITableViewController {
             self.DataView?.bag.remove(ID: item.ID)
             self.loadItemData()
             self.loadView()
-
         })
         
         //let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
