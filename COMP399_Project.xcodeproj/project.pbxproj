@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		364338DC246091E90066B411 /* LevelUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364338DB246091E90066B411 /* LevelUpViewController.swift */; };
 		A9094511245DFDF600A2835D /* InventoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9094510245DFDF600A2835D /* InventoryController.swift */; };
 		A9094515245E0EBC00A2835D /* GameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9094514245E0EBC00A2835D /* GameItem.swift */; };
 		A98EF8272459ED270065A6D4 /* Potion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98EF8262459ED270065A6D4 /* Potion.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		364338DB246091E90066B411 /* LevelUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpViewController.swift; sourceTree = "<group>"; };
 		A9094510245DFDF600A2835D /* InventoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryController.swift; sourceTree = "<group>"; };
 		A9094513245E038700A2835D /* Items */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Items; path = ../../Items; sourceTree = "<group>"; };
 		A9094514245E0EBC00A2835D /* GameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItem.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				A9E1D259244E2F18009B5865 /* AppDelegate.swift */,
 				A9E1D25B244E2F18009B5865 /* SceneDelegate.swift */,
 				A9E1D25D244E2F19009B5865 /* ViewController.swift */,
+				364338DB246091E90066B411 /* LevelUpViewController.swift */,
 				A9E1D25F244E2F19009B5865 /* Main.storyboard */,
 				A9E1D26D244E3512009B5865 /* GameTabBarViewController.swift */,
 				A9E1D272244E6B8E009B5865 /* Entity.swift */,
@@ -175,6 +178,7 @@
 				A9E0285C245FAD340064849F /* StoreTableViewController.swift in Sources */,
 				A9E1D25A244E2F18009B5865 /* AppDelegate.swift in Sources */,
 				A9094515245E0EBC00A2835D /* GameItem.swift in Sources */,
+				364338DC246091E90066B411 /* LevelUpViewController.swift in Sources */,
 				A9E1D26E244E3512009B5865 /* GameTabBarViewController.swift in Sources */,
 				A9E1D25C244E2F18009B5865 /* SceneDelegate.swift in Sources */,
 				A9094511245DFDF600A2835D /* InventoryController.swift in Sources */,
