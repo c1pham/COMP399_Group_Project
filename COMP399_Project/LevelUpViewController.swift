@@ -11,29 +11,34 @@ import UIKit
 class LevelUpViewController: UIViewController {
     
     @IBOutlet weak var increaseButton: UIButton!
+    var DataView : GameTabBarViewController? = nil
     
     
     
     @IBAction func increaseHP(_ sender: UIButton){
-       // _ = (self.parent)! as! GameTabBarViewController
-        let parent = GameTabBarViewController()
-        parent.player.increaseHealth()
-        
+        DataView!.player.increaseHealth()
+        print("print HP")
     }
     
     @IBAction func increaseAttack(_ sender: UIButton){
-        
+        DataView!.player.increaseAttack()
+        print("print atk")
+
     }
     
     @IBAction func increaseDefense(_ sender: UIButton){
-        
+        DataView!.player.increaseDefense()
+        print("print def")
+
     }
     
     @IBAction func increaseLuck(_ sender: UIButton){
-        
+        DataView!.player.increaseLuck()
+        print("print luck")
     }
 
     override func viewDidLoad() {
+        DataView = (self.parent as! GameTabBarViewController)
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
