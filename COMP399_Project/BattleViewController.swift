@@ -200,6 +200,12 @@ class BattleViewController: UIViewController {
         }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        player = (parent as! GameTabBarViewController).player
+        playerHealth.text = "\(player.getCurrentHealth())"
+        super.viewWillAppear(true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

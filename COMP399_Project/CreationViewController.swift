@@ -122,8 +122,10 @@ class CreationViewController: UIViewController {
         let stats = [health, attack, defense, luck]
         let name = nameTextField.text!
         
-        (parent as! GameTabBarViewController).player = Player(name: name, stats: stats, sprite: [])
-        
+        print("before")
+        print("after")
+        (presentingViewController as! GameTabBarViewController).player = Player(name: name, stats: stats, sprite: [])
+        //(presentingViewController as! MainViewController).player =
         
         self.dismiss(animated: true, completion: nil)
     }

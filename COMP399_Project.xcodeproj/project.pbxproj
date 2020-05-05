@@ -12,6 +12,7 @@
 		364338DC246091E90066B411 /* LevelUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364338DB246091E90066B411 /* LevelUpViewController.swift */; };
 		A9094511245DFDF600A2835D /* InventoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9094510245DFDF600A2835D /* InventoryController.swift */; };
 		A9094515245E0EBC00A2835D /* GameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9094514245E0EBC00A2835D /* GameItem.swift */; };
+		A97C40152461EEB2000DDFB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C40142461EEB2000DDFB9 /* MainViewController.swift */; };
 		A98EF8272459ED270065A6D4 /* Potion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98EF8262459ED270065A6D4 /* Potion.swift */; };
 		A98EF8292459F2B00065A6D4 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98EF8282459F2B00065A6D4 /* Equipment.swift */; };
 		A98EF82F245B09D90065A6D4 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98EF82E245B09D90065A6D4 /* Inventory.swift */; };
@@ -34,6 +35,7 @@
 		A9094510245DFDF600A2835D /* InventoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryController.swift; sourceTree = "<group>"; };
 		A9094513245E038700A2835D /* Items */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Items; path = ../../Items; sourceTree = "<group>"; };
 		A9094514245E0EBC00A2835D /* GameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItem.swift; sourceTree = "<group>"; };
+		A97C40142461EEB2000DDFB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A98EF8262459ED270065A6D4 /* Potion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Potion.swift; sourceTree = "<group>"; };
 		A98EF8282459F2B00065A6D4 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		A98EF82E245B09D90065A6D4 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				A9E1D25B244E2F18009B5865 /* SceneDelegate.swift */,
 				A9E1D25D244E2F19009B5865 /* ViewController.swift */,
 				A9E1D25F244E2F19009B5865 /* Main.storyboard */,
+				A97C40142461EEB2000DDFB9 /* MainViewController.swift */,
 				2C4798E12461D137000F125E /* CreationViewController.swift */,
 				364338DB246091E90066B411 /* LevelUpViewController.swift */,
 				2C4798DF2461A971000F125E /* BattleViewController.swift */,
@@ -183,6 +186,7 @@
 				A98EF82F245B09D90065A6D4 /* Inventory.swift in Sources */,
 				2C4798E22461D137000F125E /* CreationViewController.swift in Sources */,
 				A9E1D273244E6B8E009B5865 /* Entity.swift in Sources */,
+				A97C40152461EEB2000DDFB9 /* MainViewController.swift in Sources */,
 				A9E0285C245FAD340064849F /* StoreTableViewController.swift in Sources */,
 				A9E1D25A244E2F18009B5865 /* AppDelegate.swift in Sources */,
 				A9094515245E0EBC00A2835D /* GameItem.swift in Sources */,
