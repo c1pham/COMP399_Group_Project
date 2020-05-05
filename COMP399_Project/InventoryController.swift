@@ -154,9 +154,18 @@ class InventoryController: UITableViewController {
         )
         
         let removeAction = UIAlertAction(title: "Remove Item", style: UIAlertAction.Style.destructive, handler: {(alertAction : UIAlertAction) in
-            self.DataView?.bag.remove(ID: item.ID)
-            self.loadItemData()
-            self.loadView()
+            if (type(of: item) != HealPotion.self && (item as! Equipment).equipped){
+                let warningAlertController = UIAlertController(title: "Error", message: "This item is equipped you cannot remove it without taking it off first", preferredStyle: UIAlertController.Style.alert)
+                let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                // this is how we add button to alert controller, which is okay btn action
+                warningAlertController.addAction(defaultAction)
+                self.present(warningAlertController, animated: true, completion: nil)
+            } else {
+                self.DataView?.bag.remove(ID: item.ID)
+                self.loadItemData()
+                self.loadView()
+            }
+            
         })
         
         //let descriptionAlertController = UIAlertController(title: "Description", message: item.display(), preferredStyle: UIAlertController.Style.alert)
