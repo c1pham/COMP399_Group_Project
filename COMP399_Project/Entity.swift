@@ -49,10 +49,27 @@ class Character {
         return sprite
     }
     
-    func getHealth() -> Int{
+    func getStatHealth() -> Int{
         return stats[0]
     }
     
+    func getStatAttack() -> Int{
+        return stats[1]
+    }
+    
+    func getStatDefense() -> Int{
+        return stats[2]
+    }
+    
+    func getStatLuck() -> Int{
+        return stats[3]
+    }
+    
+    func getCurrentHealth() -> Int{
+        return curHp
+    }
+    
+    //Get certain values
     func getAttack() -> Int{
         let critChance = arc4random_uniform(100)
         if critChance <= stats[3]{
@@ -62,15 +79,7 @@ class Character {
     }
     
     func getDefense() -> Int{
-        return stats[2]
-    }
-    
-    func getLuck() -> Int{
-        return stats[3]
-    }
-    
-    func getCurrentHealth() -> Int{
-        return curHp
+        return Int(arc4random_uniform(UInt32(stats[2])))
     }
     
     //If attacked, num is positive, if healed num is negative
@@ -90,12 +99,10 @@ class Player: Character{
     var statPoints = 0          //Points available after level up
     var weaponEquip = 0         //No Weapon Equipped
     var armorEquip = [0,0,0,0]  //No Armor Equipped
+    var gold = 0                //Amount of gold player has
     
-    var helmetEquipped = false;
-    var chestPieceEquipped = false;
-    var glovesEquipped = false;
-    var bootEquipped = false;
-    var swordEquipped = false;
+    var armorEquipped = [false,false,false,false]       //Helmet, Chest, Glove, Boots
+    var swordEquipped = false;                          //Weapon
     
     
     //When Player levels up
@@ -138,23 +145,38 @@ class Player: Character{
     
     //decrease the various stats
     func decreaseHealth(){
-        stats[0] -= 1
+        self.stats[0] -= 1
         
         //When you increase the health stat, make sure to update the max Hp to new value
-        maxHp = stats[0] * 10
-        curHp = maxHp
+        self.maxHp = stats[0] * 10
+        self.curHp = maxHp
     }
     
     func decreaseAttack(){
-        stats[1] -= 1
+        self.stats[1] -= 1
     }
 
     func decreaseDefense(){
-        stats[2] -= 1
+        self.stats[2] -= 1
     }
     
     func decreaseLuck(){
-        stats[3] -= 1
+        self.stats[3] -= 1
+    }
+    
+    //Change amount of gold player has
+    func changeGold(_ amount: Int){
+        self.gold += amount
+    }
+    
+    //Get the amount of gold player has
+    func getGold() -> Int{
+        return gold
+    }
+    
+    //Increase current expierence value
+    func increaseExp(_ amount: Int){
+        curExp += amount
     }
     
     //Change attack by including the weapon
@@ -173,30 +195,8 @@ class Player: Character{
         for i in armorEquip{
             totalDef += i
         }
-        return stats[2] + totalDef
+        return Int(arc4random_uniform(UInt32(stats[2] + totalDef)))
     }
-}
-
-//If false, player is alive, else player is dead
-func battleSequence(player: Character, enemy: Character) -> Bool{
-    
-    //While player is alive
-    while player.getCurrentHealth() > 0{
-        
-        //Player attacks first
-        enemy.changeHealth(player.getAttack())
-        
-        //If enemy dies, player is alive and dosen't take anymore damage
-        if enemy.getCurrentHealth() <= 0{
-            return false
-        }
-        
-        //Enemy attack next
-        player.changeHealth(enemy.getAttack())
-    }
-    
-    //If player is not alive, return true
-    return true
 }
 
 //Spawn some enemy at a certain level

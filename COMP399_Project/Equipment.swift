@@ -40,14 +40,14 @@ class Helmet : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.helmetEquipped == true) {
+        if (equipped && player.armorEquipped[0] == true) {
             self.equipped = false
-            player.helmetEquipped = false
+            player.armorEquipped[0] = false
             super.increaseStats(type: "health", amount: self.health, entity: player )
             super.increaseStats(type: "defense", amount: self.defense, entity: player )
-        } else if (!self.equipped && player.bootEquipped == false) {
+        } else if (!self.equipped && player.armorEquipped[0] == false) {
             self.equipped = true
-            player.helmetEquipped = true
+            player.armorEquipped[0] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player )
             super.decreaseStats(type: "defense", amount: self.defense, entity: player )
         }
@@ -65,14 +65,14 @@ class ChestPiece : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.chestPieceEquipped == false) {
+        if (equipped && player.armorEquipped[1] == false) {
             self.equipped = false
-            player.chestPieceEquipped = false
+            player.armorEquipped[1] = false
             super.increaseStats(type: "health", amount: self.health, entity: player )
             super.increaseStats(type: "defense", amount: self.defense, entity: player )
-        } else if (!self.equipped && player.chestPieceEquipped == true){
+        } else if (!self.equipped && player.armorEquipped[1] == true){
             self.equipped = true
-            player.chestPieceEquipped = true
+            player.armorEquipped[1] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player)
             super.decreaseStats(type: "defense", amount: self.defense, entity: player)
         }
@@ -90,14 +90,14 @@ class Boot : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.bootEquipped == true ) {
+        if (equipped && player.armorEquipped[3] == true ) {
             self.equipped = false
-            player.bootEquipped = false
+            player.armorEquipped[3] = false
             super.increaseStats(type: "health", amount: self.health, entity: player)
             super.increaseStats(type: "defense", amount: self.defense, entity: player)
-        } else if (!self.equipped && player.bootEquipped == false) {
+        } else if (!self.equipped && player.armorEquipped[3] == false) {
             self.equipped = true
-            player.bootEquipped = true
+            player.armorEquipped[3] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player)
             super.decreaseStats(type: "defense", amount: self.defense, entity: player)
         }
@@ -118,15 +118,15 @@ class Gloves : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.glovesEquipped == true) {
+        if (equipped && player.armorEquipped[2] == true) {
             self.equipped = false
-            player.glovesEquipped = false
+            player.armorEquipped[2] = false
             super.increaseStats(type: "health", amount: self.health, entity: player)
             super.increaseStats(type: "defense", amount: self.defense, entity: player )
             super.increaseStats(type: "luck", amount: self.luck, entity: player)
-        } else if (!self.equipped && player.glovesEquipped == false) {
+        } else if (!self.equipped && player.armorEquipped[2] == false) {
             self.equipped = true
-            player.glovesEquipped = true
+            player.armorEquipped[2] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player )
             super.decreaseStats(type: "defense", amount: self.defense, entity: player )
             super.decreaseStats(type: "luck", amount: self.luck, entity: player)
