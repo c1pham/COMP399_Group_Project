@@ -129,7 +129,7 @@ class CreationViewController: UIViewController {
         
         //Save the unused stat points
         (presentingViewController as! GameTabBarViewController).player.setStatPoint(statPoints)
-        
+        (presentingViewController as! GameTabBarViewController).prepareBagData()
         ((presentingViewController as! GameTabBarViewController).viewControllers![0] as! MainViewController).loadInfo()
         
         //Dismiss view

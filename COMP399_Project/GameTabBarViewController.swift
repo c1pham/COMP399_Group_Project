@@ -16,14 +16,19 @@ class GameTabBarViewController: UITabBarController {
     
 
     override func viewDidLoad() {
+        prepareBagData()
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    func prepareBagData() {
+        bag = Inventory()
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Ripped mittins", type: "gloves")!)
         bag.add(item: factory.produceItem(name: "Stick", type: "sword")!)
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
 
