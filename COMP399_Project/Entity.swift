@@ -19,10 +19,10 @@ class Character {
     var maxHp: Int              //Max Health value of character
     var level = 1               //Level of Character
     var stats: [Int]            //Stats: [Hp, Att, Def, Lck]
-    var sprite: String          //Sprite is a string since I don't know how to add a UIImage to this class
+    var sprite: [String]        //Sprite is a string since I don't know how to add a UIImage to this class
     
     //Will be used when the character is created
-    init (name: String, stats: [Int], sprite: String){
+    init (name: String, stats: [Int], sprite: [String]){
         self.name = name
         self.stats = stats
         self.sprite = sprite
@@ -31,7 +31,7 @@ class Character {
     }
     
     //Used for enemies that are created
-    init(name: String, stats: [Int], sprite: String, level: Int) {
+    init(name: String, stats: [Int], sprite: [String], level: Int) {
         self.name = name
         self.stats = stats
         self.sprite = sprite
@@ -45,7 +45,7 @@ class Character {
         return name
     }
     
-    func getSprite() -> String{
+    func getSprite() -> [String]{
         return sprite
     }
     
@@ -67,6 +67,10 @@ class Character {
     
     func getCurrentHealth() -> Int{
         return curHp
+    }
+    
+    func setSprite(_ newSprite: [String]){
+        self.sprite = newSprite
     }
     
     //Get certain values
@@ -204,12 +208,12 @@ func spawnEnemy(level: Int) -> Character{
     let name = ["Slime", "Goblin", "Skeleton"]              //List of enemy names
     let modifier = ["Common", "Uncommon", "Rare"]           //List of modifier names
     let stats = [[4,1,1,1],[3,2,1,2],[6,5,5,5]]             //Initial Stats of enemies
-    let sprite = ["temp0","temp1","temp2"]                  //This needs to be changed in order for the sprite to be created
+    let sprite = [["temp1"],["temp2"],["temp3"]]                  //This needs to be changed in order for the sprite to be created
     let spawnChance = Int(arc4random_uniform(100))          //Chance that an enemy spawns
     let modifierChance = Int(arc4random_uniform(100))       //Chance that an enemy spawns with a specific modifer
     var enemyName: String                                   //Final name of enemy
     var enemyStats: [Int]                                   //Final stats of enemy
-    var enemySprite: String                                 //Final sprite of enemy
+    var enemySprite: [String]                                 //Final sprite of enemy
     
     //Modifier 10% Rare, 30% Uncommon, 60% Common
     if modifierChance < 100 && modifierChance >= 90{

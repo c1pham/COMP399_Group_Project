@@ -9,7 +9,7 @@
 import UIKit
 
 class GameTabBarViewController: UITabBarController {
-    var player = Player(name: "John", stats: [10,5,5,5], sprite: "None")
+    var player = Player(name: "John", stats: [1,5,5,5], sprite: [])
     var bag = Inventory()
     let factory = ItemFactory()
     

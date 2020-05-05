@@ -9,16 +9,27 @@
 import UIKit
 
 class BattleViewController: UIViewController {
-    var player = Player(name: "None", stats: [0,0,0,0], sprite: "None")     //Player
-    var enemy = Character(name: "None", stats: [0,0,0,0], sprite: "None")   //Enemy
+    
+    //Variables
+    var player = Player(name: "None", stats: [0,0,0,0], sprite: [])     //Player
+    var enemy = Character(name: "None", stats: [0,0,0,0], sprite: [])   //Enemy
     var enemyIsDead = false                         //Death of enemy
     var playerIsDead = false                        //Dead of player
+    var animation: [UIImage] = []
     
+    //Labels
     @IBOutlet weak var playerHealth: UILabel!
     @IBOutlet weak var enemyHealth: UILabel!
     @IBOutlet weak var enemyName: UILabel!
     
+    //Images
+    @IBOutlet weak var playerImage: UIImageView!
+    @IBOutlet weak var enemyImage: UIImageView!
+    
+    //Text View
     @IBOutlet weak var battleText: UITextView!
+    
+    //Battle Button
     @IBOutlet weak var battleButton: UIButton!
     
     func damageTaken(_ attack: Int, _ defense: Int) -> Int{
@@ -74,11 +85,6 @@ class BattleViewController: UIViewController {
         let plyAtt = damageTaken(player.getAttack(), enemy.getDefense())                //Get the attack of player
         let emyAtt = damageTaken(enemy.getAttack(), player.getDefense())                 //Get the attack of enemy
         
-        //Player is dead when button is clicked
-        if player.getCurrentHealth() <= 0 {
-            playerIsDead = true
-        }
-        
         //Change button to continue battling
         if battleButton.title(for: UIControl.State.normal) == "Start Battle"{
             battleButton.setTitle("Continue Battle", for: UIControl.State.normal)
@@ -130,6 +136,11 @@ class BattleViewController: UIViewController {
                 //Anounce changes
                 battleText.text = "\(player.getName()) has taken \(emyAtt) damage. \n" + battlePrevText!
                 playerHealth.text = "\(player.getCurrentHealth())"
+                
+                //Player is dead
+                if player.getCurrentHealth() <= 0 {
+                    playerIsDead = true
+                }
             }
         }
         
@@ -156,14 +167,66 @@ class BattleViewController: UIViewController {
         
         //If player dies
         if playerIsDead{
+            
+            //Report that Player dies
             battleText.text = "Game Over! \n" + "You have Died! \n"
+            
+            //If player has no sword equipped
+            if !player.swordEquipped{
+                
+                //Change animation frames
+                animation = Array(repeating: UIImage(named: "player_death_1")!, count:31)
+                for i in 0..<31{
+                    animation.insert(UIImage(named: "player_death_\(i+1)")!, at: i)
+                }
+                
+            //Otherwise player has a sword equipped
+            } else {
+                
+                //Change animation frames
+                animation = Array(repeating: UIImage(named: "player_death_1")!, count:33)
+                for i in 0..<31{
+                    animation.insert(UIImage(named: "player_death_sword_\(i+1)")!, at: i)
+                }
+            }
+            
+            //Set new animation, with new duration and repeat only once
+            playerImage.animationImages = animation
+            playerImage.animationDuration = 2
+            playerImage.animationRepeatCount = 1
+            
+            //Start the animating
+            playerImage.startAnimating()
         }
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Get the player
         player = (parent as! GameTabBarViewController).player
+        
+        //Spawn an enemy
         enemy = spawnEnemy(level: player.level)
+        
+        //Create the animation
+        if !player.swordEquipped{
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_\(i+1)")!)
+            }
+        } else {
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_sword_\(i+1)")!)
+            }
+        }
+        
+        //Set the animation with duration
+        playerImage.animationImages = animation
+        playerImage.animationDuration = 4
+        
+        //Start animating
+        playerImage.startAnimating()
         
         //Change label to match values
         enemyName.text = enemy.getName()
