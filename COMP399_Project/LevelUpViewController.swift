@@ -20,12 +20,13 @@ StepperAll: When a stepper is pressed this is called. It will update or decrease
  
 SaveChanges: This will save the points and make it pernamenet. The user cannot retrieve points already saved.
  
-ViewWillAppear: Get the player to save and show its stats. Then it will set the maximum and minium value for the steppers.
+ViewWillAppear: Get the player to save and show its stats. Then it will set the maximum and minium value for the steppers, and frames for player animation
 */
 
 import UIKit
 
 class LevelUpViewController: UIViewController {
+
     var player = Player(name: "LevelUp", stats: [100,100,100,100], sprite: []) // default player
     // stats
     var health = 0
@@ -33,6 +34,7 @@ class LevelUpViewController: UIViewController {
     var defense = 0
     var luck = 0
     var statPoint = 0 // stat points to use
+    var animation: [UIImage] = [] // frames for animation
     
     //Labels
     @IBOutlet weak var healthPnt: UILabel!
@@ -47,6 +49,9 @@ class LevelUpViewController: UIViewController {
     @IBOutlet weak var stepper2: UIStepper! // stepper for attack
     @IBOutlet weak var stepper3: UIStepper! // stepper for defense
     @IBOutlet weak var stepper4: UIStepper! // stepper for luck
+    
+    
+    @IBOutlet weak var playerImage: UIImageView! // image
     
     //When Stepper is selected
     @IBAction func stepperAll(_ sender: UIStepper) {
@@ -150,6 +155,7 @@ class LevelUpViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -191,7 +197,31 @@ class LevelUpViewController: UIViewController {
         stepper2.maximumValue = Double(attack + statPoint)
         stepper3.maximumValue = Double(defense + statPoint)
         stepper4.maximumValue = Double(luck + statPoint)
+        
+        
+        //set animation
+        player = (parent as! GameTabBarViewController).player
+        
+        //Create the animation
+        if !player.swordEquipped{
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_\(i+1)")!)
+            }
+        } else {
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_sword_\(i+1)")!)
+            }
+        }
+        
+        //Set the animation with duration
+        playerImage.animationImages = animation
+        playerImage.animationDuration = 4
+        
+        //Start animating
+        playerImage.startAnimating()
     }
+    
+    
     
 
     /*

@@ -35,7 +35,7 @@ class BattleViewController: UIViewController {
     var enemy = Character(name: "None", stats: [0,0,0,0], sprite: [])   //Enemy
     var enemyIsDead = false                         //Death of enemy
     var playerIsDead = false                        //Dead of player
-    var animation: [UIImage] = []
+    var animation: [UIImage] = [] // frames for animation
     
     //Labels
     @IBOutlet weak var playerHealth: UILabel!

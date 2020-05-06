@@ -19,7 +19,7 @@ Subroutine Purpose:
 
  stepperPressed: This will make the stepper increase or decrease variable stat points and increase or decrease the stat of the player according to the stepper pressed.
  
- saveButton: This will take the name and stats set by the user and set the player in GameTabBarViewController to the new player and dismiss this view.
+ saveButton: This will take the name and stats set by the user and set the player in GameTabBarViewController to the new player and dismiss this view. It will also check if name is filled. If not an alert is created for an error.
 
 */
 
@@ -138,8 +138,19 @@ class CreationViewController: UIViewController {
     @IBAction func saveButton(_ sender: Any) {
         
         //Get the various stats and name of character
-        let stats = [health, attack, defense, luck]
+        
+        
         let name = nameTextField.text!
+        
+        if (name == "") {
+            let warningAlertController = UIAlertController(title: "Error", message: "There is no name input here.", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            // this is how we add button to alert controller, which is okay btn action
+            warningAlertController.addAction(defaultAction)
+            self.present(warningAlertController, animated: true, completion: nil )
+            return
+        }
+        let stats = [health, attack, defense, luck]
         
         //Create a character using the various stats
         (presentingViewController as! GameTabBarViewController).player = Player(name: name, stats: stats, sprite: [])

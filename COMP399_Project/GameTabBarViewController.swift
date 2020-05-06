@@ -37,6 +37,7 @@ class GameTabBarViewController: UITabBarController {
     
     func prepareBagData() {
         bag = Inventory()
+        // add items to inventory
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
