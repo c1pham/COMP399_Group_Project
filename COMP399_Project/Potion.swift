@@ -6,13 +6,28 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+/*
+Author: Christopher Pham
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This programs has the potion class and all its subclasses which at this point is only heal potion. Heal potion will heal the player.
+
+Subroutine Purpose:
+ Potion:
+ use and display: They are implemented in potion and to be reimplmented in their subclasses
+ Heal Potion:
+ use: It will increase the players current health
+ display: It will show characteristics of heal potion
+
+*/
+
 import Foundation
 
-
-
 class Potion : GameItem {
-    var stat: String
-    var amount: Int
+    var stat: String // stat to increase
+    var amount: Int // the amount of points it will increased
    
     init(name: String, price: Int, description: String, stat: String, amount: Int) {
         self.stat = stat
@@ -41,6 +56,7 @@ class HealPotion: Potion {
     }
 }
 
+/*
 
 // These can be implemented later
 
@@ -72,4 +88,4 @@ class TemporaryPotion: Potion {
     }
     
 }
-
+*/

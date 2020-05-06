@@ -6,13 +6,27 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+/*
+Christopher: Christopher Pham
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This main view controller will house all the player and item data that will be accessed by all the other view controllers.
+
+Subroutine Purpose:
+
+prepareBagData: Will make the inventory be intitated with some default game items
+ 
+viewDidLoad: It is overriden to call itself and prepareBagData
+*/
+
 import UIKit
 
 class GameTabBarViewController: UITabBarController {
-    var player = Player(name: "John", stats: [5,5,5,5], sprite: [])
-    var bag = Inventory()
-    let factory = ItemFactory()
-    
+    var player = Player(name: "John", stats: [5,5,5,5], sprite: []) // player to be accessed by other view controllers
+    var bag = Inventory() // inventory to be accessed by other view controllers
+    let factory = ItemFactory() // will make items
     
 
     override func viewDidLoad() {

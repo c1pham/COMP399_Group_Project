@@ -6,6 +6,23 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+/*
+Author: Christopher Pham
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This view controller will load the player information into some labels when loaded
+
+Subroutine Purpose:
+
+loadInfo: This will take the name level and gold attribute from the player and upload them into labels
+ 
+ViewDidLoad: It is are overrided to call themself and load info so it will have synchronous information when new character is made
+ 
+viewWillAppear: It is are overrided to call themself and load info so it will have synchronous information when new character is made
+*/
+
 import UIKit
 
 class MainViewController: UIViewController {
@@ -22,7 +39,6 @@ class MainViewController: UIViewController {
         DataView = parent as! GameTabBarViewController
         loadInfo()
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     

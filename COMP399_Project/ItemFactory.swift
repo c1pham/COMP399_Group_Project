@@ -6,6 +6,21 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+/*
+Author: Christopher Pham
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This programs hold all the item's information here. It also produces new items when calling the produce function.
+
+Subroutine Purpose:
+
+produce: Given an item name and type it will make a brand new object.
+ 
+findIndex: Given an name and array of data for the item type, it will find the index of it and return it.
+*/
+
 import Foundation
 
 class ItemFactory {
@@ -14,7 +29,7 @@ class ItemFactory {
     init() {
     }
     
-    
+    // keeps track of indexes for stats in array heal portion. It also lines up with order of arguments in heal potion constructor and healPotionStats array
     enum HEAL_POTION : Int{
         case NAME = 0
         case PRICE = 1
@@ -23,6 +38,7 @@ class ItemFactory {
         case AMOUNT = 4
     }
     
+    // has all the values to pass into a heal potion constructor in proper order according to the item
     let healPotionStats = [
         ["Small Hp Potion", 5 , "Heals a little", "health", 10],
         ["Medium Hp Potion", 10 , "Heals a good amount", "health", 50],
@@ -77,6 +93,7 @@ class ItemFactory {
         ["Large Temporary Luck HP Boost Potion", 0 , "Pernamently Increase HP", "luck", 100]
     ]*/
     
+    // keeps track of indexes for stats in array heal portion. It also lines up with order of arguments in sword constructor and swordStats array
     enum SWORD : Int {
         case NAME = 0
         case PRICE = 1
@@ -86,6 +103,7 @@ class ItemFactory {
         case LUCK = 5
     }
     
+    // has all the values to pass into a sword constructor in proper order according to the item
     let swordStats = [
         ["Stick", 5, "A old stick", "scrap", 1 , 1],
         ["Sharpen Bat", 10, "A old sword", "uncommon", 4, 4],
@@ -94,6 +112,7 @@ class ItemFactory {
         ["Excalibur", 1000, "The King's choice of weaponry", "legendary", 100 , 100]
     ]
     
+    // keeps track of indexes for stats in array heal portion. It also lines up with order of arguments in chest piece constructor and chest piece array
     enum CHEST_PIECE : Int {
         case NAME = 0
         case PRICE = 1
@@ -103,6 +122,7 @@ class ItemFactory {
         case DEFENSE = 5
     }
     
+    // has all the values to pass into a chest piec constructor in proper order according to the item
     let chestPieceStats = [
         ["Leather Coat", 5, "A old leather coat", "scrap", 1 , 1],
         ["Chain Mail", 10, "A old rusty chain mail", "uncommon", 4, 4],
@@ -111,6 +131,7 @@ class ItemFactory {
         ["Author's chestpiece", 100, "The King's choice for an chestpieces", "legendary", 100 , 100]
     ]
     
+    // keeps track of indexes for stats in array heal portion. It also lines up with order of arguments in helmet constructor and helemtStats array
     enum HELMET : Int {
         case NAME = 0
         case PRICE = 1
@@ -120,6 +141,7 @@ class ItemFactory {
         case DEFENSE = 5
     }
     
+    // has all the values to pass into a helmet constructor in proper order according to the item
     let helmetStats = [
         ["Bowl", 5, "A broken bowl", "scrap", 1 , 1],
         ["Miners Helmet", 10, "A old miner's helmet", "uncommon", 4, 4],
@@ -128,6 +150,7 @@ class ItemFactory {
         ["Author's helmet", 100, "The King's choice for an helmet", "legendary", 100 , 100]
     ]
     
+    // keeps track of indexes for stats in array heal portion. It also lines up with order of arguments in boot constructor and bootStats array
     enum BOOT : Int{
         case NAME = 0
         case PRICE = 1
@@ -137,6 +160,7 @@ class ItemFactory {
         case DEFENSE = 5
     }
     
+    // has all the values to pass into a boot constructor in proper order according to the item
     let bootStats = [
         ["Ripped Socks", 5, "A broken bowl", "scrap", 1 , 1],
         ["Miners Boots", 10, "A old miner's boots", "uncommon", 4, 4],
@@ -145,6 +169,7 @@ class ItemFactory {
         ["Author's boots", 100, "The King's choice for an boots", "legendary", 100 , 100]
     ]
     
+    // keeps track of indexes for stats in array heal portion. It also lines up with order of arguments in gloves constructor and gloveStats array
     enum GLOVES : Int {
         case NAME = 0
         case PRICE = 1
@@ -155,6 +180,7 @@ class ItemFactory {
         case LUCK = 6
     }
     
+    // has all the values to pass into a gloves constructor in proper order according to the item
     let glovesStats = [
         ["Ripped mittins", 5, "A broken bowl", "scrap", 1 , 1, 1],
         ["Miners gloves", 10, "A old miner's boots", "uncommon", 4, 4, 4],
@@ -164,16 +190,17 @@ class ItemFactory {
     ]
     
     
-    
     func produceItem(name : String, type: String) -> GameItem? {
         /*else if (type == "perm_potion") {
             item = PernamentPotion(name: permPotionStats[index][PERM_POTION.NAME.rawValue] as! String, price: permPotionStats[index][PERM_POTION.PRICE.rawValue] as! Int, description: permPotionStats[index][PERM_POTION.DESCRIPTION.rawValue] as! String, stat: permPotionStats[index][PERM_POTION.STAT.rawValue] as! String, amount: permPotionStats[index][PERM_POTION.AMOUNT.rawValue] as! Int)
         } else if (type == "temp_potion") {
             item = TemporaryPotion(name: tempPotionStats[index][TEMP_POTION.NAME.rawValue] as! String, price: tempPotionStats[index][TEMP_POTION.PRICE.rawValue] as! Int, description: tempPotionStats[index][TEMP_POTION.DESCRIPTION.rawValue] as! String, stat: tempPotionStats[index][TEMP_POTION.STAT.rawValue] as! String, amount: tempPotionStats[index][TEMP_POTION.AMOUNT.rawValue] as! Int, turns: tempPotionStats[index][TEMP_POTION.DURATION.rawValue] as! Int)
         } */
-        var item : GameItem? = nil
-        var itemStats : [[Any]]
+        var item : GameItem? = nil // item place holder
+        var itemStats : [[Any]] // will hold array of items
         
+        
+        // find the stats array to go with the given type
         if (type == "heal_potion") {
             itemStats = healPotionStats
         }/* else if (type == "perm_potion") {
@@ -194,12 +221,14 @@ class ItemFactory {
             return nil
         }
         
-        let index = findIndex(itemName: name, itemStats: itemStats)
+        let index = findIndex(itemName: name, itemStats: itemStats) // find index of the item, using the name
         
         if (index == -1 ) {
-            return nil
+            return nil // if not found return nil
         }
         
+        // depending on type produce an new item
+        // all values will be grabbed from stats aray using the index and enumerators to get 2rd index for 2D array
         if (type == "heal_potion") {
             item = HealPotion(name: healPotionStats[index][HEAL_POTION.NAME.rawValue] as! String, price: healPotionStats[index][HEAL_POTION.PRICE.rawValue] as! Int, description: healPotionStats[index][HEAL_POTION.DESCRIPTION.rawValue] as! String, amount: healPotionStats[index][HEAL_POTION.AMOUNT.rawValue] as! Int)
         } else if (type == "helmet") {
@@ -221,8 +250,9 @@ class ItemFactory {
     
     
     func findIndex(itemName: String, itemStats: [[Any]]) -> Int {
+        // look through item stats
         for num in 0 ... itemStats.count - 1 {
-            if (itemStats[num][0] as! String == itemName) {
+            if (itemStats[num][0] as! String == itemName) { // if it has same name return index
                 return num
             }
         }

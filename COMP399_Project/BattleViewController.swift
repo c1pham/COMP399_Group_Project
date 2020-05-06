@@ -6,6 +6,26 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+/*
+Author: Brendan Mendes
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This governs the battle mechanics. It will allow the user to fight, retreat from enemies.
+
+Subroutine Purpose:
+
+ damageTaken: return the value of damage taken given a characters defense and another characters attack
+ 
+ escapeButton: When escape button pressed call this function. The player takes damage and a new enemy will spawn. The labels will update and the text view will show the event. Also checks if user died.
+ 
+ battleButtonPressed: When battle button is pressed call this button. The player will attack the enemy. If they died spawn a new enemy and the player gains experience and gold. If the enemy lives then they will attack the user. If the user died they will no longer be able to battle.
+ 
+ viewWillAppear: This function is overriden to get the player from GameTabBarViewController and get an enemy. It will pick which animation frames to use depending on if the player has a weapon or not
+
+*/
+
 import UIKit
 
 class BattleViewController: UIViewController {
@@ -33,10 +53,10 @@ class BattleViewController: UIViewController {
     @IBOutlet weak var battleButton: UIButton!
     
     func damageTaken(_ attack: Int, _ defense: Int) -> Int{
-        if attack < defense{
+        if attack < defense{ // if defense is greater than attack do some damage
             return 1
         }
-        return attack - defense
+        return attack - defense // return damage to character
     }
     
     //When you decide to escape

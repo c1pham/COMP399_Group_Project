@@ -6,6 +6,23 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+/*
+Author: Brendan Mendes
+Editor: Christopher Pham
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This view controller will take information from the creation view and create a whole new player to be uploaded into the GameTabBarViewController.
+
+Subroutine Purpose:
+
+ stepperPressed: This will make the stepper increase or decrease variable stat points and increase or decrease the stat of the player according to the stepper pressed.
+ 
+ saveButton: This will take the name and stats set by the user and set the player in GameTabBarViewController to the new player and dismiss this view.
+
+*/
+
 import UIKit
 
 class CreationViewController: UIViewController {
@@ -28,10 +45,10 @@ class CreationViewController: UIViewController {
     @IBOutlet weak var luckPnt: UILabel!
     
     //Steppers
-    @IBOutlet weak var stepper1: UIStepper!
-    @IBOutlet weak var stepper2: UIStepper!
-    @IBOutlet weak var stepper3: UIStepper!
-    @IBOutlet weak var stepper4: UIStepper!
+    @IBOutlet weak var stepper1: UIStepper! // stepper for health
+    @IBOutlet weak var stepper2: UIStepper! // stepper for attack
+    @IBOutlet weak var stepper3: UIStepper! // stepper for defense
+    @IBOutlet weak var stepper4: UIStepper! // stepper for luck
     
     
     @IBAction func stepperPressed(_ sender: UIStepper) {
@@ -139,7 +156,6 @@ class CreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     

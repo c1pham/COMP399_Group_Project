@@ -6,7 +6,24 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
-//COMMENT
+/*
+Author: Brendan Mendes
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This file contains the classes of all player entities and function to increase their stats and how they react in battle.
+
+Subroutine Purpose:
+ Character:
+    getName: This will get the name data
+    getSprite: This will return the sprite
+ 
+    TO BE FINISHED
+
+
+*/
+
 import Foundation
 
 class Character {
@@ -66,6 +83,7 @@ class Character {
         return curHp
     }
     
+    // setter for sprite
     func setSprite(_ newSprite: [String]){
         self.sprite = newSprite
     }

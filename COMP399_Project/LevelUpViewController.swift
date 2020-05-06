@@ -6,15 +6,33 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+/*
+Author: Mark Miller, Christopher Pham, Brendan Mendes
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This view controller will adjust the stats of the character according to the available upgrade stat points.
+
+Subroutine Purpose:
+
+StepperAll: When a stepper is pressed this is called. It will update or decrease the player stats based on user selection and available stat points.
+ 
+SaveChanges: This will save the points and make it pernamenet. The user cannot retrieve points already saved.
+ 
+ViewWillAppear: Get the player to save and show its stats. Then it will set the maximum and minium value for the steppers.
+*/
+
 import UIKit
 
 class LevelUpViewController: UIViewController {
-    var player = Player(name: "LevelUp", stats: [100,100,100,100], sprite: [])
+    var player = Player(name: "LevelUp", stats: [100,100,100,100], sprite: []) // default player
+    // stats
     var health = 0
     var attack = 0
     var defense = 0
     var luck = 0
-    var statPoint = 0
+    var statPoint = 0 // stat points to use
     
     //Labels
     @IBOutlet weak var healthPnt: UILabel!
@@ -25,10 +43,10 @@ class LevelUpViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     
     //Steppers
-    @IBOutlet weak var stepper1: UIStepper!
-    @IBOutlet weak var stepper2: UIStepper!
-    @IBOutlet weak var stepper3: UIStepper!
-    @IBOutlet weak var stepper4: UIStepper!
+    @IBOutlet weak var stepper1: UIStepper! // stepper for health
+    @IBOutlet weak var stepper2: UIStepper! // stepper for attack
+    @IBOutlet weak var stepper3: UIStepper! // stepper for defense
+    @IBOutlet weak var stepper4: UIStepper! // stepper for luck
     
     //When Stepper is selected
     @IBAction func stepperAll(_ sender: UIStepper) {

@@ -84,8 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				A9094513245E038700A2835D /* Items */,
-				A98EF8282459F2B00065A6D4 /* Equipment.swift */,
 				A9094514245E0EBC00A2835D /* GameItem.swift */,
+				A98EF8282459F2B00065A6D4 /* Equipment.swift */,
 				A98EF82E245B09D90065A6D4 /* Inventory.swift */,
 				A98EF830245B17350065A6D4 /* ItemFactory.swift */,
 				A98EF8262459ED270065A6D4 /* Potion.swift */,

@@ -6,20 +6,43 @@
 //  Copyright © 2020 Christoper Pham. All rights reserved.
 //
 
+
+/*
+Author: Christopher Pham
+Editor: Brendan Mendes
+Date: 5-6-20
+Class: Mobile Application Development
+
+Purpose:
+This is equipment superclass class for all equipment. All equipment need the property to be equipped and will have an rarity. Afterwards each subclass of equipment is made here. They will adjust the stats of the users when equipped or taken off.
+
+Subroutine Purpose:
+
+ Equipment Class:
+ use: This will equip the item to the user and adjust their stats
+
+ display: it will show the attributes of the equipment.
+
+ All subclasses of equipment implement the use function and increase stats according to what is received through the constructor. Some subclasses increase luck some increase defense or some other attribute.
+
+ All subclasses of equipment implment display and they will show all their attributes
+ 
+
+*/
 import Foundation
 
+
 class Equipment : GameItem {
-    var grade : String
-    var equipped: Bool
+    var grade : String // the rarity of the item
+    var equipped: Bool // bool to know if item is equipped or not
     
     init(name: String, price: Int, description: String, rarity: String) {
         self.grade = rarity
-        self.equipped = false
+        self.equipped = false // item cannot be equipped at first
         super.init(name: name, price: price, description: description)
     }
     
     override func use(player: Character) {
-        // can make generic method that goes through all stat changes and applies them
         self.equipped = true
     }
     
@@ -32,6 +55,7 @@ class Equipment : GameItem {
 class Helmet : Equipment {
     var health : Int
     var defense : Int
+    
     init(name: String, price: Int, description: String, rarity: String, health: Int, defense: Int) {
         self.defense = defense
         self.health = health
@@ -40,12 +64,12 @@ class Helmet : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.armorEquipped[0] == true) {
+        if (equipped && player.armorEquipped[0] == true) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[0] = false
             super.increaseStats(type: "health", amount: self.health, entity: player )
             super.increaseStats(type: "defense", amount: self.defense, entity: player )
-        } else if (!self.equipped && player.armorEquipped[0] == false) {
+        } else if (!self.equipped && player.armorEquipped[0] == false) { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[0] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player )
@@ -65,12 +89,12 @@ class ChestPiece : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.armorEquipped[1] == false) {
+        if (equipped && player.armorEquipped[1] == false) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[1] = false
             super.increaseStats(type: "health", amount: self.health, entity: player )
             super.increaseStats(type: "defense", amount: self.defense, entity: player )
-        } else if (!self.equipped && player.armorEquipped[1] == true){
+        } else if (!self.equipped && player.armorEquipped[1] == true){  // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[1] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player)
@@ -90,12 +114,12 @@ class Boot : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.armorEquipped[3] == true ) {
+        if (equipped && player.armorEquipped[3] == true ) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[3] = false
             super.increaseStats(type: "health", amount: self.health, entity: player)
             super.increaseStats(type: "defense", amount: self.defense, entity: player)
-        } else if (!self.equipped && player.armorEquipped[3] == false) {
+        } else if (!self.equipped && player.armorEquipped[3] == false) { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[3] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player)
@@ -118,13 +142,13 @@ class Gloves : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.armorEquipped[2] == true) {
+        if (equipped && player.armorEquipped[2] == true) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[2] = false
             super.increaseStats(type: "health", amount: self.health, entity: player)
             super.increaseStats(type: "defense", amount: self.defense, entity: player )
             super.increaseStats(type: "luck", amount: self.luck, entity: player)
-        } else if (!self.equipped && player.armorEquipped[2] == false) {
+        } else if (!self.equipped && player.armorEquipped[2] == false) { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[2] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player )
@@ -146,12 +170,12 @@ class Sword : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.swordEquipped) {
+        if (equipped && player.swordEquipped) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.swordEquipped = false
             super.increaseStats(type: "attack", amount: self.attack, entity: player)
             super.increaseStats(type: "luck", amount: self.luck, entity: player)
-        } else if (!equipped && !player.swordEquipped)  {
+        } else if (!equipped && !player.swordEquipped)  { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.swordEquipped = true
             super.increaseStats(type: "attack", amount: self.attack, entity: player)
