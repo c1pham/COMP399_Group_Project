@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     
     override func viewDidLoad() {
-        DataView = parent as! GameTabBarViewController
+        DataView = (parent as! GameTabBarViewController)
         loadInfo()
         super.viewDidLoad()
         // Do any additional setup after loading the view.

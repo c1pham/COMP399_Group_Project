@@ -18,10 +18,32 @@ Subroutine Purpose:
  Character:
     getName: This will get the name data
     getSprite: This will return the sprite
+    getStatHealth: Get health stat
+    getStatAttack: Get attack stat
+    getStatDefense: Get defense stat
+    getCurrentHealth: get current health
+    getAttack: Get attack damage
+    getDefense: Get a random number of defense base on defense stat
+    changeHealth: Adjust health to heal amount or damage
+ Player:
+    increaseHealth: Will increment health stat
+    increaseAttack: Will increment attack stat
+    increaseDefense: Will increment defense stat
+    increaseLuck: Will increment luck stat
+    decreaseHealth: Will decrement health stat
+    decreaseAttack: Will decrement attack stat
+    decreaseDefense: Will decrement defense stat
+    decreaseLuck: Will decrement luck stat
+    changeGold: Will change the gold variable by an amount
+    getGold: Return the amount of gold
+    increaseExp: Increase the number of experience points the character has
+    getStatPoint: Will return the stat points layer has
+    setStateAmount: Set the value of statPoints
+    getAttack: Get attack damage and calculate a chance to crit
+    getDefense: Gets defense and incorporates the equipment into defense calculation
  
-    TO BE FINISHED
-
-
+ spawnEnemy: Creates a random character for player to fight
+ 
 */
 
 import Foundation

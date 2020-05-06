@@ -7,7 +7,7 @@
 //
 
 /*
-Christopher: Christopher Pham
+Author: Christopher Pham
 Date: 5-6-20
 Class: Mobile Application Development
 
