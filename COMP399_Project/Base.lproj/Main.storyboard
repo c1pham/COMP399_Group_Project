@@ -334,8 +334,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dorver-idle0" translatesAutoresizingMaskIntoConstraints="NO" id="sqs-0I-F2t">
-                                <rect key="frame" x="205" y="233" width="196" height="160"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqs-0I-F2t">
+                                <rect key="frame" x="205" y="235" width="172" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="player_idle_1" translatesAutoresizingMaskIntoConstraints="NO" id="Pim-fh-rGX">
@@ -623,7 +623,6 @@
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
-        <image name="dorver-idle0" width="180" height="144"/>
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="player_idle_1" width="700" height="500"/>
         <image name="shield" catalog="system" width="128" height="121"/>
