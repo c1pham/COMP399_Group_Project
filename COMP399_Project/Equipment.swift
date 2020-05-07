@@ -89,12 +89,12 @@ class ChestPiece : Equipment {
     
     override func use(player: Character) {
         let player = (player as! Player)
-        if (equipped && player.armorEquipped[1] == false) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
+        if (equipped && player.armorEquipped[1] == true) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[1] = false
             super.decreaseStats(type: "health", amount: self.health, entity: player)
             super.decreaseStats(type: "defense", amount: self.defense, entity: player)
-        } else if (!self.equipped && player.armorEquipped[1] == true){  // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
+        } else if (!self.equipped && player.armorEquipped[1] == false){  // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[1] = true
             super.increaseStats(type: "health", amount: self.health, entity: player )

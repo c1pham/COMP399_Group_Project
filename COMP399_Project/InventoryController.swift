@@ -146,6 +146,7 @@ class InventoryController: UITableViewController {
         // when now action is trigger, closure is like a tiny function but closure does not have name where as function has name, when we call fucntion we need function name, but for closure we just need to put stuff in curly parathesis
         let useAction = UIAlertAction(title: "Use", style:
             UIAlertAction.Style.default, handler: {(alertAction: UIAlertAction) in
+                print(item.display())
                 let itemType = type(of: item)
                 let player = (self.DataView!.player as Character)
                 if (itemType == HealPotion.self) { // if item is heal potion then use, remove the item, and reload item data and table

@@ -42,6 +42,10 @@ class GameTabBarViewController: UITabBarController {
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
+        bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
+        bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
+        bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
+        bag.add(item: factory.produceItem(name: "Large Hp Potion", type: "heal_potion")!)
         bag.add(item: factory.produceItem(name: "Ripped mittins", type: "gloves")!)
         bag.add(item: factory.produceItem(name: "Stick", type: "sword")!)
     }
