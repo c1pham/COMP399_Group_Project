@@ -233,18 +233,16 @@ class BattleViewController: UIViewController {
             if !player.swordEquipped{
                 
                 //Change animation frames
-                animation = Array(repeating: UIImage(named: "player_death_1")!, count:31)
                 for i in 0..<31{
-                    animation.insert(UIImage(named: "player_death_\(i+1)")!, at: i)
+                    animation.append(UIImage(named: "player_death_\(i+1)")!)
                 }
                 
             //Otherwise player has a sword equipped
             } else {
                 
                 //Change animation frames
-                animation = Array(repeating: UIImage(named: "player_death_1")!, count:33)
-                for i in 0..<31{
-                    animation.insert(UIImage(named: "player_death_sword_\(i+1)")!, at: i)
+                for i in 0..<33{
+                    animation.append(UIImage(named: "player_death_sword_\(i+1)")!)
                 }
             }
             
@@ -252,10 +250,10 @@ class BattleViewController: UIViewController {
             playerImage.animationImages = animation
             playerImage.animationDuration = playerAnimationSpd
             playerImage.animationRepeatCount = 1
-            
-            //Start the animating
-            playerImage.startAnimating()
         }
+        
+        //Start the animating
+        playerImage.startAnimating()
         
     }
     
