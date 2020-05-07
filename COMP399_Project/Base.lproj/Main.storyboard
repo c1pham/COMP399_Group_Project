@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hxd-Lu-iIV">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -219,7 +219,7 @@
             </objects>
             <point key="canvasLocation" x="457" y="-222"/>
         </scene>
-        <!--Item-->
+        <!--Store-->
         <scene sceneID="gz7-wA-4Cd">
             <objects>
                 <tableViewController id="7N4-GY-of1" customClass="StoreTableViewController" customModule="COMP399_Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,7 +258,7 @@
                             <outlet property="delegate" destination="7N4-GY-of1" id="MOf-fX-hhQ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="dollarsign.circle" catalog="system" id="KUs-ed-SF6"/>
+                    <tabBarItem key="tabBarItem" title="Store" image="dollarsign.circle" catalog="system" id="KUs-ed-SF6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nM8-pu-Hmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
