@@ -67,13 +67,13 @@ class Helmet : Equipment {
         if (equipped && player.armorEquipped[0] == true) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[0] = false
-            super.increaseStats(type: "health", amount: self.health, entity: player )
-            super.increaseStats(type: "defense", amount: self.defense, entity: player )
+            super.decreaseStats(type: "health", amount: self.health, entity: player )
+            super.decreaseStats(type: "defense", amount: self.defense, entity: player )
         } else if (!self.equipped && player.armorEquipped[0] == false) { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[0] = true
-            super.decreaseStats(type: "health", amount: self.health, entity: player )
-            super.decreaseStats(type: "defense", amount: self.defense, entity: player )
+            super.increaseStats(type: "health", amount: self.health, entity: player )
+            super.increaseStats(type: "defense", amount: self.defense, entity: player )
         }
     }
 }
@@ -92,13 +92,13 @@ class ChestPiece : Equipment {
         if (equipped && player.armorEquipped[1] == false) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[1] = false
-            super.increaseStats(type: "health", amount: self.health, entity: player )
-            super.increaseStats(type: "defense", amount: self.defense, entity: player )
+            super.decreaseStats(type: "health", amount: self.health, entity: player)
+            super.decreaseStats(type: "defense", amount: self.defense, entity: player)
         } else if (!self.equipped && player.armorEquipped[1] == true){  // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[1] = true
-            super.decreaseStats(type: "health", amount: self.health, entity: player)
-            super.decreaseStats(type: "defense", amount: self.defense, entity: player)
+            super.increaseStats(type: "health", amount: self.health, entity: player )
+            super.increaseStats(type: "defense", amount: self.defense, entity: player )
         }
     }
 }
@@ -117,13 +117,13 @@ class Boot : Equipment {
         if (equipped && player.armorEquipped[3] == true ) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[3] = false
-            super.increaseStats(type: "health", amount: self.health, entity: player)
-            super.increaseStats(type: "defense", amount: self.defense, entity: player)
+            super.decreaseStats(type: "health", amount: self.health, entity: player)
+            super.decreaseStats(type: "defense", amount: self.defense, entity: player)
         } else if (!self.equipped && player.armorEquipped[3] == false) { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.armorEquipped[3] = true
-            super.decreaseStats(type: "health", amount: self.health, entity: player)
-            super.decreaseStats(type: "defense", amount: self.defense, entity: player)
+            super.increaseStats(type: "health", amount: self.health, entity: player)
+            super.increaseStats(type: "defense", amount: self.defense, entity: player)
         }
     }
     
@@ -145,15 +145,15 @@ class Gloves : Equipment {
         if (equipped && player.armorEquipped[2] == true) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.armorEquipped[2] = false
-            super.increaseStats(type: "health", amount: self.health, entity: player)
-            super.increaseStats(type: "defense", amount: self.defense, entity: player )
-            super.increaseStats(type: "luck", amount: self.luck, entity: player)
-        } else if (!self.equipped && player.armorEquipped[2] == false) { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
-            self.equipped = true
-            player.armorEquipped[2] = true
             super.decreaseStats(type: "health", amount: self.health, entity: player )
             super.decreaseStats(type: "defense", amount: self.defense, entity: player )
             super.decreaseStats(type: "luck", amount: self.luck, entity: player)
+        } else if (!self.equipped && player.armorEquipped[2] == false) { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
+            self.equipped = true
+            player.armorEquipped[2] = true
+            super.increaseStats(type: "health", amount: self.health, entity: player)
+            super.increaseStats(type: "defense", amount: self.defense, entity: player )
+            super.increaseStats(type: "luck", amount: self.luck, entity: player)
         }
     }
 }
@@ -173,13 +173,13 @@ class Sword : Equipment {
         if (equipped && player.swordEquipped) { // checks if the item is equipped and if the the player has an helmet is equipped, if so then de equipped and player's reduce stats
             self.equipped = false
             player.swordEquipped = false
-            super.increaseStats(type: "attack", amount: self.attack, entity: player)
-            super.increaseStats(type: "luck", amount: self.luck, entity: player)
+            super.decreaseStats(type: "attack", amount: self.attack, entity: player)
+            super.decreaseStats(type: "luck", amount: self.luck, entity: player)
         } else if (!equipped && !player.swordEquipped)  { // checks if the item is not equipped and if the the player has an helmet is not equipped, if so then equipped item and increase stats
             self.equipped = true
             player.swordEquipped = true
             super.increaseStats(type: "attack", amount: self.attack, entity: player)
-            super.decreaseStats(type: "luck", amount: self.luck, entity: player)
+            super.increaseStats(type: "luck", amount: self.luck, entity: player)
         }
     }
     
