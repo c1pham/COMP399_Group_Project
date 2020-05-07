@@ -96,8 +96,12 @@ class BattleViewController: UIViewController {
                 animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
             }
             
+            //Set the Enemy Animation
+            enemyImage.animationImages = animationEnemy
+            
             //Start animation
             enemyImage.startAnimating()
+            
         
             //Change button to Start
             battleButton.setTitle("Start Battle", for: UIControl.State.normal)
@@ -131,9 +135,6 @@ class BattleViewController: UIViewController {
         
             //Announce the change to user
             battleText.text = "\(enemy.getName()) has taken \(plyAtt) damage. \n" + battlePrevText!
-        
-            //Show the enemy health
-            enemyHealth.text = "\(enemy.getCurrentHealth())"
             
             //If the enemy is dead
             if enemy.getCurrentHealth() <= 0{
@@ -172,7 +173,6 @@ class BattleViewController: UIViewController {
             
                 //Anounce changes
                 battleText.text = "\(player.getName()) has taken \(emyAtt) damage. \n" + battlePrevText!
-                playerHealth.text = "\(player.getCurrentHealth())"
                 
                 //Player is dead
                 if player.getCurrentHealth() <= 0 {
@@ -180,6 +180,10 @@ class BattleViewController: UIViewController {
                 }
             }
         }
+        
+        //Show the health
+        enemyHealth.text = "\(enemy.getCurrentHealth())"
+        playerHealth.text = "\(player.getCurrentHealth())"
         
         //If the enemy is dead
         if enemyIsDead{
@@ -194,6 +198,9 @@ class BattleViewController: UIViewController {
             for i in 0..<enemy.getSpriteIdle().count{
                 animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
             }
+            
+            //Set the Enemy Animation
+            enemyImage.animationImages = animationEnemy
             
             //Start animating
             enemyImage.startAnimating()
