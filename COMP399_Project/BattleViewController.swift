@@ -96,8 +96,12 @@ class BattleViewController: UIViewController {
                 animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
             }
             
+            //Set the Enemy Animation
+            enemyImage.animationImages = animationEnemy
+            
             //Start animation
             enemyImage.startAnimating()
+            
         
             //Change button to Start
             battleButton.setTitle("Start Battle", for: UIControl.State.normal)
@@ -131,9 +135,6 @@ class BattleViewController: UIViewController {
         
             //Announce the change to user
             battleText.text = "\(enemy.getName()) has taken \(plyAtt) damage. \n" + battlePrevText!
-        
-            //Show the enemy health
-            enemyHealth.text = "\(enemy.getCurrentHealth())"
             
             //If the enemy is dead
             if enemy.getCurrentHealth() <= 0{
@@ -172,7 +173,6 @@ class BattleViewController: UIViewController {
             
                 //Anounce changes
                 battleText.text = "\(player.getName()) has taken \(emyAtt) damage. \n" + battlePrevText!
-                playerHealth.text = "\(player.getCurrentHealth())"
                 
                 //Player is dead
                 if player.getCurrentHealth() <= 0 {
@@ -180,6 +180,10 @@ class BattleViewController: UIViewController {
                 }
             }
         }
+        
+        //Show the health
+        enemyHealth.text = "\(enemy.getCurrentHealth())"
+        playerHealth.text = "\(player.getCurrentHealth())"
         
         //If the enemy is dead
         if enemyIsDead{
@@ -194,6 +198,9 @@ class BattleViewController: UIViewController {
             for i in 0..<enemy.getSpriteIdle().count{
                 animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
             }
+            
+            //Set the Enemy Animation
+            enemyImage.animationImages = animationEnemy
             
             //Start animating
             enemyImage.startAnimating()
@@ -226,18 +233,16 @@ class BattleViewController: UIViewController {
             if !player.swordEquipped{
                 
                 //Change animation frames
-                animation = Array(repeating: UIImage(named: "player_death_1")!, count:31)
                 for i in 0..<31{
-                    animation.insert(UIImage(named: "player_death_\(i+1)")!, at: i)
+                    animation.append(UIImage(named: "player_death_\(i+1)")!)
                 }
                 
             //Otherwise player has a sword equipped
             } else {
                 
                 //Change animation frames
-                animation = Array(repeating: UIImage(named: "player_death_1")!, count:33)
-                for i in 0..<31{
-                    animation.insert(UIImage(named: "player_death_sword_\(i+1)")!, at: i)
+                for i in 0..<33{
+                    animation.append(UIImage(named: "player_death_sword_\(i+1)")!)
                 }
             }
             
@@ -245,10 +250,10 @@ class BattleViewController: UIViewController {
             playerImage.animationImages = animation
             playerImage.animationDuration = playerAnimationSpd
             playerImage.animationRepeatCount = 1
-            
-            //Start the animating
-            playerImage.startAnimating()
         }
+        
+        //Start the animating
+        playerImage.startAnimating()
         
     }
     
