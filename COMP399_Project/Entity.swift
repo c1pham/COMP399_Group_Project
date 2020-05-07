@@ -55,22 +55,21 @@ class Character {
     var maxHp: Int              //Max Health value of character
     var level = 1               //Level of Character
     var stats: [Int]            //Stats: [Hp, Att, Def, Lck]
-    var sprite: [String]        //Sprite is a string since I don't know how to add a UIImage to this class
+    var spriteIdle: [String] = []       //Sprite for idle animation
+    var spriteDeath: [String]  = []     //Sprite for death animation
     
     //Will be used when the character is created
-    init (name: String, stats: [Int], sprite: [String]){
+    init (name: String, stats: [Int]){
         self.name = name
         self.stats = stats
-        self.sprite = sprite
         self.maxHp = stats[0] * 10
         self.curHp = self.maxHp
     }
     
     //Used for enemies that are created
-    init(name: String, stats: [Int], sprite: [String], level: Int) {
+    init(name: String, stats: [Int], level: Int) {
         self.name = name
         self.stats = stats
-        self.sprite = sprite
         self.level = level
         self.maxHp = stats[0] * 10              //Kind of useless for the enemies
         self.curHp = self.maxHp
@@ -81,8 +80,12 @@ class Character {
         return name
     }
     
-    func getSprite() -> [String]{
-        return sprite
+    func getSpriteIdle() -> [String]{
+        return spriteIdle
+    }
+    
+    func getSpriteDeath() -> [String]{
+        return spriteDeath
     }
     
     func getStatHealth() -> Int{
@@ -106,8 +109,12 @@ class Character {
     }
     
     // setter for sprite
-    func setSprite(_ newSprite: [String]){
-        self.sprite = newSprite
+    func setSpriteIdle(_ newSprite: [String]){
+        self.spriteIdle = newSprite
+    }
+    
+    func setSpriteDeath(_ newSprite: [String]){
+        self.spriteDeath = newSprite
     }
     
     //Get certain values
@@ -263,15 +270,17 @@ class Player: Character{
 
 //Spawn some enemy at a certain level
 func spawnEnemy(level: Int) -> Character{
+    
+    //Variables
     let name = ["Slime", "Goblin", "Skeleton"]              //List of enemy names
     let modifier = ["Common", "Uncommon", "Rare"]           //List of modifier names
     let stats = [[4,1,1,1],[3,2,1,2],[6,5,5,5]]             //Initial Stats of enemies
-    let sprite = [["temp1"],["temp2"],["temp3"]]                  //This needs to be changed in order for the sprite to be created
     let spawnChance = Int(arc4random_uniform(100))          //Chance that an enemy spawns
     let modifierChance = Int(arc4random_uniform(100))       //Chance that an enemy spawns with a specific modifer
     var enemyName: String                                   //Final name of enemy
     var enemyStats: [Int]                                   //Final stats of enemy
-    var enemySprite: [String]                                 //Final sprite of enemy
+    var enemySpriteIdle: [String]  = []                                //Final sprite of enemy
+    var enemySpriteDeath: [String] = []
     
     //Modifier 10% Rare, 30% Uncommon, 60% Common
     if modifierChance < 100 && modifierChance >= 90{
@@ -287,34 +296,74 @@ func spawnEnemy(level: Int) -> Character{
     
     //20% Chance for a Skeleton to Spawn
     if spawnChance < 100 && spawnChance >= 80 {
+        
+        //Name is the rarity + the official name of skeleton
         enemyName += " " + name[2]
+        
+        //Change stats according to difficulty of skeleton
         for i in 0..<4{
             enemyStats[i] += stats[2][i]
         }
-        enemySprite = sprite[2]
+        
+        //Set idle animation
+        for i in 0..<6{
+            enemySpriteIdle.append("skeleton_idle_\(i+1)")
+        }
+        
+        //Set death animation
+        for i in 0..<8{
+            enemySpriteDeath.append("skeleton_death_\(i+1)")
+        }
         
     //30% Chance for a Goblin to spawn
     } else if spawnChance < 80 && spawnChance >= 50{
+        
+        //Name is the rarity + the official name of goblin
         enemyName += " " + name[1]
+        
+        //Set stats accoring to difficulty of goblin
         for i in 0..<4{
             enemyStats[i] += stats[1][i]
         }
-        enemySprite = sprite[1]
+        
+        //Set idle animation
+        for i in 0..<8{
+            enemySpriteIdle.append("goblin_idle_\(i+1)")
+        }
+            
+        //Set death animation
+        for i in 0..<8{
+            enemySpriteDeath.append("goblin_death_\(i+1)")
+        }
         
     //50% Chance for a Slime to spawn
     } else {
-       enemyName += " " + name[0]
+        
+        //Set enemy name to slime with rarity
+        enemyName += " " + name[0]
+        
+        //Set difficulty
         for i in 0..<4{
             enemyStats[i] += stats[0][i]
         }
-        enemySprite = sprite[0]
+        
+        //Setting idle
+        enemySpriteIdle = ["slime"]
+        
+        //Setting death
+        enemySpriteDeath = ["slime"]
     }
     
     //Change stats according to enemy level
     for i in 0..<enemyStats.count{
-        let statGained = Int(arc4random_uniform(UInt32(level)))
+        let statGained = level + Int(arc4random_uniform(UInt32(level)))
         enemyStats[i] += statGained
     }
+    
     //Enemy is created
-    return Character(name: enemyName, stats: enemyStats, sprite: enemySprite, level: level)
+    let enemy = Character(name: enemyName, stats: enemyStats, level: level)
+    enemy.setSpriteIdle(enemySpriteIdle)
+    enemy.setSpriteDeath(enemySpriteDeath)
+    
+    return enemy
 }

@@ -24,7 +24,7 @@ viewDidLoad: It is overriden to call itself and prepareBagData
 import UIKit
 
 class GameTabBarViewController: UITabBarController {
-    var player = Player(name: "John", stats: [5,5,5,5], sprite: []) // player to be accessed by other view controllers
+    var player = Player(name: "John", stats: [5,5,5,5]) // player to be accessed by other view controllers
     var bag = Inventory() // inventory to be accessed by other view controllers
     let factory = ItemFactory() // will make items
     

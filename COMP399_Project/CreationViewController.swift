@@ -153,7 +153,7 @@ class CreationViewController: UIViewController {
         let stats = [health, attack, defense, luck]
         
         //Create a character using the various stats
-        (presentingViewController as! GameTabBarViewController).player = Player(name: name, stats: stats, sprite: [])
+        (presentingViewController as! GameTabBarViewController).player = Player(name: name, stats: stats)
         
         //Save the unused stat points
         (presentingViewController as! GameTabBarViewController).player.setStatPoint(statPoints)
