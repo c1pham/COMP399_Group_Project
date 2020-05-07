@@ -152,6 +152,7 @@ class StoreTableViewController: UITableViewController {
             let item = self.factory.produceItem(name: item.name, type: itemType[indexPath.section])!
             if (item.price <= (self.DataView?.player.gold)!) { // if player has enough gold buy
                 self.DataView?.bag.add(item: item) // add item to inventory
+                self.DataView?.player.gold -= item.price
                 self.inventoryView?.tableView.reloadData() // reload inventory table
                 // success message
                 let successAlertController = UIAlertController(title: "Success", message: "Item added the inventory", preferredStyle: UIAlertController.Style.alert)
