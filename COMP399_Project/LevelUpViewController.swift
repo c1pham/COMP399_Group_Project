@@ -27,7 +27,7 @@ import UIKit
 
 class LevelUpViewController: UIViewController {
 
-    var player = Player(name: "LevelUp", stats: [100,100,100,100], sprite: []) // default player
+    var player = Player(name: "LevelUp", stats: [100,100,100,100]) // default player
     // stats
     var health = 0
     var attack = 0
@@ -202,6 +202,9 @@ class LevelUpViewController: UIViewController {
         //set animation
         player = (parent as! GameTabBarViewController).player
         
+        //Reset Animation
+        animation = []
+        
         //Create the animation
         if !player.swordEquipped{
             for i in 0..<12{
@@ -215,7 +218,7 @@ class LevelUpViewController: UIViewController {
         
         //Set the animation with duration
         playerImage.animationImages = animation
-        playerImage.animationDuration = 4
+        playerImage.animationDuration = 1
         
         //Start animating
         playerImage.startAnimating()

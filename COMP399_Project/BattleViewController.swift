@@ -31,11 +31,12 @@ import UIKit
 class BattleViewController: UIViewController {
     
     //Variables
-    var player = Player(name: "None", stats: [0,0,0,0], sprite: [])     //Player
-    var enemy = Character(name: "None", stats: [0,0,0,0], sprite: [])   //Enemy
+    var player = Player(name: "Battle", stats: [0,0,0,0])     //Player
+    var enemy = Character(name: "Battle", stats: [0,0,0,0])   //Enemy
     var enemyIsDead = false                         //Death of enemy
     var playerIsDead = false                        //Dead of player
-    var animation: [UIImage] = [] // frames for animation
+    var animation: [UIImage] = []       //frames for animation
+    var animationEnemy: [UIImage] = []      //frames for enemy animation
     
     //Labels
     @IBOutlet weak var playerHealth: UILabel!
@@ -83,6 +84,14 @@ class BattleViewController: UIViewController {
         
             //Create a new enemy
             enemy = spawnEnemy(level: player.level)
+            
+            //Reset the animation
+            animationEnemy = []
+            
+            //Set enemy animation images
+            for i in 0..<enemy.getSpriteIdle().count{
+                animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
+            }
         
             //Change button to Start
             battleButton.setTitle("Start Battle", for: UIControl.State.normal)
@@ -172,6 +181,14 @@ class BattleViewController: UIViewController {
             //Create a new enemy
             enemy = spawnEnemy(level: player.level)
             
+            //Reset the animation
+            animationEnemy = []
+                       
+            //Set enemy animation images
+            for i in 0..<enemy.getSpriteIdle().count{
+                animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
+            }
+            
             //Change button to Start
             battleButton.setTitle("Start Battle", for: UIControl.State.normal)
             
@@ -192,6 +209,9 @@ class BattleViewController: UIViewController {
             
             //Report that Player dies
             battleText.text = "Game Over! \n" + "You have Died! \n"
+            
+            //Reset Animation
+            animation = []
             
             //If player has no sword equipped
             if !player.swordEquipped{
@@ -237,6 +257,9 @@ class BattleViewController: UIViewController {
             playerIsDead = false
         }
         
+        //Reset the animation
+        animation = []
+        
         //Create the animation
         if !player.swordEquipped{
             for i in 0..<12{
@@ -250,7 +273,7 @@ class BattleViewController: UIViewController {
         
         //Set the animation with duration
         playerImage.animationImages = animation
-        playerImage.animationDuration = 4
+        playerImage.animationDuration = 1
         
         //Start animating
         playerImage.startAnimating()
@@ -266,6 +289,11 @@ class BattleViewController: UIViewController {
         //Spawn an enemy
         enemy = spawnEnemy(level: player.level)
         
+        //Set enemy animation images
+        for i in 0..<enemy.getSpriteIdle().count{
+            animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
+        }
+        
         //Create the animation
         if !player.swordEquipped{
             for i in 0..<12{
@@ -279,9 +307,12 @@ class BattleViewController: UIViewController {
         
         //Set the animation with duration
         playerImage.animationImages = animation
-        playerImage.animationDuration = 4
+        playerImage.animationDuration = 1
+        enemyImage.animationImages = animationEnemy
+        enemyImage.animationDuration = 2
         
         //Start animating
+        enemyImage.startAnimating()
         playerImage.startAnimating()
         
         //Change label to match values

@@ -92,6 +92,10 @@ class MainViewController: UIViewController {
     
     func prepareAnimation() {
         let player = DataView!.player
+        
+        //Reset Animation
+        animation = []
+        
         if !player.swordEquipped{
             for i in 0..<12{
                 animation.append(UIImage(named:"player_idle_\(i+1)")!)
@@ -104,7 +108,7 @@ class MainViewController: UIViewController {
         
         //Set the animation with duration
         playerImage.animationImages = animation
-        playerImage.animationDuration = 4
+        playerImage.animationDuration = 1
         
         //Start animating
         playerImage.startAnimating()
