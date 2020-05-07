@@ -37,6 +37,9 @@ class BattleViewController: UIViewController {
     var playerIsDead = false                        //Dead of player
     var animation: [UIImage] = []       //frames for animation
     var animationEnemy: [UIImage] = []      //frames for enemy animation
+    let playerAnimationSpd = 1.0              //Change player animation speed
+    let enemyAnimationSpd = 1.0              //Chagne enemy animation speed
+    
     
     //Labels
     @IBOutlet weak var playerHealth: UILabel!
@@ -92,6 +95,9 @@ class BattleViewController: UIViewController {
             for i in 0..<enemy.getSpriteIdle().count{
                 animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
             }
+            
+            //Start animation
+            enemyImage.startAnimating()
         
             //Change button to Start
             battleButton.setTitle("Start Battle", for: UIControl.State.normal)
@@ -189,6 +195,9 @@ class BattleViewController: UIViewController {
                 animationEnemy.append(UIImage(named: enemy.getSpriteIdle()[i])!)
             }
             
+            //Start animating
+            enemyImage.startAnimating()
+            
             //Change button to Start
             battleButton.setTitle("Start Battle", for: UIControl.State.normal)
             
@@ -234,7 +243,7 @@ class BattleViewController: UIViewController {
             
             //Set new animation, with new duration and repeat only once
             playerImage.animationImages = animation
-            playerImage.animationDuration = 2
+            playerImage.animationDuration = playerAnimationSpd
             playerImage.animationRepeatCount = 1
             
             //Start the animating
@@ -259,35 +268,7 @@ class BattleViewController: UIViewController {
         
         //Reset the animation
         animation = []
-        
-        //Create the animation
-        if !player.swordEquipped{
-            for i in 0..<12{
-                animation.append(UIImage(named:"player_idle_\(i+1)")!)
-            }
-        } else {
-            for i in 0..<12{
-                animation.append(UIImage(named:"player_idle_sword_\(i+1)")!)
-            }
-        }
-        
-        //Set the animation with duration
-        playerImage.animationImages = animation
-        playerImage.animationDuration = 1
-        
-        //Start animating
-        playerImage.startAnimating()
-        
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //Get the player
-        player = (parent as! GameTabBarViewController).player
-        
-        //Spawn an enemy
-        enemy = spawnEnemy(level: player.level)
+        animationEnemy = []
         
         //Set enemy animation images
         for i in 0..<enemy.getSpriteIdle().count{
@@ -307,9 +288,41 @@ class BattleViewController: UIViewController {
         
         //Set the animation with duration
         playerImage.animationImages = animation
-        playerImage.animationDuration = 1
+        playerImage.animationDuration = playerAnimationSpd
         enemyImage.animationImages = animationEnemy
-        enemyImage.animationDuration = 2
+        enemyImage.animationDuration = enemyAnimationSpd
+        
+        //Start animating
+        playerImage.startAnimating()
+        enemyImage.startAnimating()
+        
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Get the player
+        player = (parent as! GameTabBarViewController).player
+        
+        //Spawn an enemy
+        enemy = spawnEnemy(level: player.level)
+        
+        //Create the animation
+        if !player.swordEquipped{
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_\(i+1)")!)
+            }
+        } else {
+            for i in 0..<12{
+                animation.append(UIImage(named:"player_idle_sword_\(i+1)")!)
+            }
+        }
+        
+        //Set the animation with duration
+        playerImage.animationImages = animation
+        playerImage.animationDuration = playerAnimationSpd
+        enemyImage.animationImages = animationEnemy
+        enemyImage.animationDuration = enemyAnimationSpd
         
         //Start animating
         enemyImage.startAnimating()
